@@ -12,11 +12,18 @@ const Second = () => {
           height={600}
         />
         <h1 className="text-white font-bold text-2xl mt-3">DevOps Engineer</h1>
+        <h3 className="text-gray-400 font-bold text-lg">Tecnologies Stack</h3>
       </div>
-      <div className="w-1/2 h-screen flex flex-col items-center justify-center">
-        <h1 className="text-white font-bold text-2xl">mierda 1 Engineer</h1>
-        <h1 className="text-white font-bold text-2xl">mierda 2 Engineer</h1>
-        <h1 className="text-white font-bold text-2xl">mierda 3 Engineer</h1>
+      <div className="snap-y snap-mandatory overflow-y-scroll w-1/2 h-screen text-white font-bold text-2xl">
+        <div className="snap-start h-screen w-full flex items-center justify-center ">
+          Kubernetes
+        </div>
+        <div className="snap-start h-screen flex items-center justify-center ">
+          ArgoCD
+        </div>
+        <div className="snap-start h-screen flex items-center justify-center ">
+          Jenkings
+        </div>
       </div>
     </div>
   );
