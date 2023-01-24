@@ -1,10 +1,11 @@
 import Typewriter from "typewriter-effect";
 import { FaHandSpock } from "react-icons/fa";
+import { BsMouse } from "react-icons/Bs";
 import Image from "next/image";
 
-const Initialize = () => {
+const First = () => {
   return (
-    <div className="snap-start flex-shrink-0 h-screen w-screen bg-gradient-to-br from-black to-gray-900 justify-center items-center flex flex-col">
+    <div className="snap-start h-screen w-screen justify-center items-center flex flex-col">
       <div className="mb-10">
         <Image
           src="/mrbeast.png"
@@ -18,29 +19,30 @@ const Initialize = () => {
         <p className="text-blue-500 font-bold pl-2 text-2xl">
           Tony R. Raudales
         </p>
-        <FaHandSpock
-          size={25}
-          className="text-yellow-300 ml-2 animate-bounce "
-        />
+        <FaHandSpock size={25} className="text-yellow-300 ml-2" />
       </h1>
       <div className="text-white text-lg font-semibold">
         <Typewriter
           options={{
             strings: [
-              "I like to design things.",
-              "I love learning new tech.",
-              "I love meeting new people.",
-              "I create unique digital experiences.",
+              "I like to design things",
+              "I love learning new tech",
+              "I love meeting new people",
+              "I create unique digital experiences",
             ],
             autoStart: true,
             loop: true,
             deleteSpeed: 10,
-            cursor: "<",
+            cursor: ".",
             delay: 100,
           }}
         />
       </div>
+      <div className="animate-bounce absolute bottom-5">
+        <BsMouse color="white" size={30} className="animate-pulse mx-auto" />
+        <h2 className="text-white font-semibold text-sm animate-pulse mt-1">Scroll Down</h2>
+      </div>
     </div>
   );
 };
-export default Initialize;
+export default First;
