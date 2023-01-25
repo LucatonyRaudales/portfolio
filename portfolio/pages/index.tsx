@@ -1,14 +1,16 @@
-import First from "./components/first";
-import Initialize from "./components/first";
-import Second from "./components/second";
-import Third from "./components/third";
+import First from "./components/Introduction";
+import Initialize from "./components/Introduction";
+import DevOpsSection from "./components/DevOps";
+import BackendSection from "./components/Backend";
+import FrontendSection from "./components/Frontend";
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-auto overflow-x-hidden">
+    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-auto overflow-x-hidden scrollbar-hide">
       <First />
-      <Second />
-      <Third />
+      <DevOpsSection />
+      <BackendSection />
+      <FrontendSection />
     </div>
   );
 }
