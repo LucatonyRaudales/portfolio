@@ -36,7 +36,7 @@ const FrontendSection = () => {
       <div className="w-1/2 h-screen flex flex-col items-center justify-center text-center ">
         <Image
           className="ml-12"
-          src={"/Devops.png"}
+          src="/Devops.png"
           alt="Picture of the author"
           width={600}
           height={600}
@@ -45,11 +45,11 @@ const FrontendSection = () => {
           Frontend Developer
         </h1>
         <h2 className="text-gray-400 font-semibold text-md w-2/3 ">
-          As a frontend developer, I have gained experience in developing
-          highly interactive and visually appealing web and mobile applications.
-          I have worked with a variety of technologies and programming
-          languages, with a strong emphasis on web design, user interface
-          development, and performance optimization.
+          As a frontend developer, I have gained experience in developing highly
+          interactive and visually appealing web and mobile applications. I have
+          worked with a variety of technologies and programming languages, with
+          a strong emphasis on web design, user interface development, and
+          performance optimization.
         </h2>
       </div>
       <div className="snap-y snap-mandatory overflow-y-scroll w-1/2 h-screen scrollbar-hide">
