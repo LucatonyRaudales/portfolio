@@ -1,6 +1,6 @@
+import { BsMouse } from "react-icons/Bs";
 import Typewriter from "typewriter-effect";
 import { FaHandSpock } from "react-icons/fa";
-import { BsMouse } from "react-icons/Bs";
 import Image from "next/image";
 import { GrLinkedin, GrTwitter } from "react-icons/Gr";
 import { useRouter } from "next/router";
