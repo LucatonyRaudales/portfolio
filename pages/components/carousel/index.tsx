@@ -43,6 +43,12 @@ const Carousel = () => {
       image: "/vai.png",
     },
     {
+      title: "Hindra Pay",
+      description:
+      "A web and mobile platform for cryptocurrency and fiat payments, available exclusively in Honduras and continuously expanding.",
+      image: "/hindra.png",
+    },
+    {
       title: "Lotmoney",
       description:
         "Platform where creators and participants come together to earn money by creating and buying tickets, randomly selecting the winning ticket.",
@@ -64,7 +70,7 @@ const Carousel = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">My Portfolio</h1>
+      <h1 className="text-2xl font-semibold mb-4">My Latest Projects</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {projects.map((project, index) => (
           <ProjectCard
