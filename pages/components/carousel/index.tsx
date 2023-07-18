@@ -45,7 +45,7 @@ const Carousel = () => {
     {
       title: "Hindra Pay",
       description:
-      "A web and mobile platform for cryptocurrency and fiat payments, available exclusively in Honduras and continuously expanding.",
+        "A web and mobile platform for cryptocurrency and fiat payments, available exclusively in Honduras and continuously expanding.",
       image: "/hindra.png",
     },
     {
@@ -63,7 +63,7 @@ const Carousel = () => {
     {
       title: "Alquila tu Cancha",
       description:
-      "Book a court without making a phone call! Choose a day and time online to see the available slots in your city.",
+        "Book a court without making a phone call! Choose a day and time online to see the available slots in your city.",
       image: "/alquilatucancha.png",
     },
   ];
