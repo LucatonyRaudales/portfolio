@@ -70,7 +70,7 @@ const Carousel = () => {
       title: "Interrapidisimo",
       description:
         "As a DevOps engineer, I have developed and implemented the CI/CD pipelines for the databases of this logistics company, using Azure DevOps.",
-      image: "/interrapidisimo.png.png",
+      image: "/interrapidisimo.png",
     },
   ];
 
