@@ -1,7 +1,8 @@
+import { LuMouse } from "react-icons/lu";
 import Typewriter from "typewriter-effect";
 import { FaHandSpock } from "react-icons/fa";
 import Image from "next/image";
-import { GrLinkedin, GrTwitter } from "react-icons/Gr";
+import { GrLinkedin, GrTwitter } from "react-icons/gr";
 import { useRouter } from "next/router";
 
 const First = () => {
@@ -54,7 +55,7 @@ const First = () => {
         </button>
       </div>
       <div className="animate-bounce absolute bottom-5">
-        <FaHandSpock color="white" size={30} className="animate-pulse mx-auto" />
+        <LuMouse color="white" size={30} className="animate-pulse mx-auto" />
         <h2 className="text-white font-semibold text-sm animate-pulse mt-1">
           Scroll Down
         </h2>
