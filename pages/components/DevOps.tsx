@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import devopsPicture from "@/public/Devops.png";
 import jenkinsImage from "@/public/jenkins.webp";
 import argoImage from "@/public/argocd.webp";
 import terraformImage from "@/public/terraform.png";
@@ -49,7 +48,7 @@ const DevOpsSection = () => {
       <div className="w-1/2 h-screen flex flex-col items-center justify-center text-center ">
         <Image
           className="ml-12"
-          src={devopsPicture}
+          src={"/Devops.png"}
           alt="Picture of the author"
           width={600}
           height={600}

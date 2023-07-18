@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from "next/image";
-import devopsPicture from "@/public/Devops.png";
 import nextjsImage from "@/public/nextjs.png";
 import flutterImage from "@/public/flutter.png";
 import reactjsImage from "@/public/reactjs.png";
@@ -41,7 +40,7 @@ const FrontendSection = () => {
       <div className="w-1/2 h-screen flex flex-col items-center justify-center text-center ">
         <Image
           className="ml-12"
-          src={devopsPicture}
+          src={"/Devops.png"}
           alt="Picture of the author"
           width={600}
           height={600}
