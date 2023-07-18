@@ -48,7 +48,7 @@ const DevOpsSection = () => {
       <div className="w-1/2 h-screen flex flex-col items-center justify-center text-center ">
         <Image
           className="ml-12"
-          src={"/Devops.png"}
+          src={"/devops.png"}
           alt="Picture of the author"
           width={600}
           height={600}
