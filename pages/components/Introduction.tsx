@@ -1,4 +1,3 @@
-import { LuMouse } from "react-icons/Lu";
 import Typewriter from "typewriter-effect";
 import { FaHandSpock } from "react-icons/fa";
 import Image from "next/image";
@@ -55,7 +54,7 @@ const First = () => {
         </button>
       </div>
       <div className="animate-bounce absolute bottom-5">
-        <LuMouse color="white" size={30} className="animate-pulse mx-auto" />
+        <FaHandSpock color="white" size={30} className="animate-pulse mx-auto" />
         <h2 className="text-white font-semibold text-sm animate-pulse mt-1">
           Scroll Down
         </h2>
