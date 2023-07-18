@@ -34,7 +34,7 @@ const Carousel = () => {
       title: "Ruru Wallet",
       description:
         "Ruru wallet is an element of the Ruru ecosystem designed to create total crypto implementation whether you’re an institution, individual or government.",
-      image: "/Athena.png",
+      image: "/athena.png",
     },
     {
       title: "Vai",
