@@ -6,14 +6,13 @@ import Image from "next/image";
 const First = () => {
   return (
     <div className="snap-start h-screen w-screen justify-center items-center flex flex-col">
-      <div className="mb-10">
         <Image
-          src="/mrbeast.png"
+          src="/me.jpeg"
+          className="rounded-full mb-10"
           alt="Picture of the author"
-          width={150}
-          height={150}
+          width={300}
+          height={300}
         />
-      </div>
       <h1 className="text-lg font-bold text-white flex items-center">
         Hi, {"I'm "}
         <p className="text-blue-500 font-bold pl-2 text-2xl">
