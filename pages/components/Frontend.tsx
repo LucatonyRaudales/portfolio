@@ -36,7 +36,7 @@ const FrontendSection = () => {
       <div className="w-1/2 h-screen flex flex-col items-center justify-center text-center ">
         <Image
           className="ml-12"
-          src="/Devops.png"
+          src="/developer.png"
           alt="Picture of the author"
           width={600}
           height={600}
@@ -71,7 +71,7 @@ export const TechDescriptionComponent = ({
 }: TechDescriptionInterface) => {
   return (
     <div className="snap-start h-screen w-full flex flex-col items-center justify-center text-center">
-      <Image src={image} alt="Picture of the author" height={200} />
+      <Image src={image} alt="Picture of the author" height={200} width={250}/>
       <div className="text-white font-bold text-2xl mt-8  uppercase">
         {title}
       </div>
