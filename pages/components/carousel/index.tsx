@@ -66,6 +66,12 @@ const Carousel = () => {
         "Book a court without making a phone call! Choose a day and time online to see the available slots in your city.",
       image: "/alquilatucancha.png",
     },
+    {
+      title: "Interrapidisimo",
+      description:
+        "As a DevOps engineer, I have developed and implemented the CI/CD pipelines for the databases of this logistics company, using Azure DevOps.",
+      image: "/interrapidisimo.png.png",
+    },
   ];
 
   return (
