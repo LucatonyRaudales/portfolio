@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AnimatedModal from './AnimatedModal';
 
 // Types
@@ -427,7 +427,19 @@ const CertificationsSection = () => {
   const [selectedCertification, setSelectedCertification] = useState<Certification | null>(null);
   const [selectedStudy, setSelectedStudy] = useState<Study | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const INITIAL_ITEMS_COUNT = 3;
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <div className="snap-start snap-section h-screen w-full flex flex-col items-center relative overflow-hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900">
@@ -484,33 +496,84 @@ const CertificationsSection = () => {
       
       {/* Content Section */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
-          {activeTab === 'certifications' 
-            ? certifications.slice(0, INITIAL_ITEMS_COUNT).map((cert) => (
-                <CertificationCard 
-                  key={cert.id} 
-                  certification={cert} 
-                  onClick={setSelectedCertification}
-                />
-              ))
-            : studies.slice(0, INITIAL_ITEMS_COUNT).map((study) => (
-                <StudyCard 
-                  key={study.id} 
-                  study={study} 
-                  onClick={setSelectedStudy}
-                />
-              ))
-          }
-        </div>
+        {isMobile ? (
+          /* Mobile: No cards, just centered content */
+          <div className="text-center px-6 mb-8 max-w-2xl">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                {activeTab === 'certifications' ? '🏆 Professional Certifications' : '🎓 Education & Studies'}
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                {activeTab === 'certifications' 
+                  ? 'I hold industry-recognized certifications in cloud computing, cybersecurity, and software development. These credentials validate my expertise and commitment to staying current with the latest technologies and best practices.'
+                  : 'My educational background includes specialized studies in computer science, cybersecurity, and cloud technologies. I continuously invest in learning to stay at the forefront of technological innovation.'
+                }
+              </p>
+              
+              {/* Category highlights */}
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                {activeTab === 'certifications' ? (
+                  <>
+                    <div className="bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-2 text-blue-300 text-sm font-semibold">
+                      ☁️ Cloud Computing
+                    </div>
+                    <div className="bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 text-green-300 text-sm font-semibold">
+                      🔒 Cybersecurity
+                    </div>
+                    <div className="bg-purple-500/20 border border-purple-400/30 rounded-full px-4 py-2 text-purple-300 text-sm font-semibold">
+                      💻 Development
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="bg-emerald-500/20 border border-emerald-400/30 rounded-full px-4 py-2 text-emerald-300 text-sm font-semibold">
+                      🎓 Computer Science
+                    </div>
+                    <div className="bg-teal-500/20 border border-teal-400/30 rounded-full px-4 py-2 text-teal-300 text-sm font-semibold">
+                      🔐 Security Studies
+                    </div>
+                    <div className="bg-cyan-500/20 border border-cyan-400/30 rounded-full px-4 py-2 text-cyan-300 text-sm font-semibold">
+                      ☁️ Cloud Technologies
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              <p className="text-gray-400 text-sm">
+                Tap the button below to explore all {activeTab === 'certifications' ? certifications.length : studies.length} {activeTab === 'certifications' ? 'certifications' : 'studies'} in detail
+              </p>
+            </div>
+          </div>
+        ) : (
+          /* Desktop: Show cards */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
+            {activeTab === 'certifications' 
+              ? certifications.slice(0, INITIAL_ITEMS_COUNT).map((cert) => (
+                  <CertificationCard 
+                    key={cert.id} 
+                    certification={cert} 
+                    onClick={setSelectedCertification}
+                  />
+                ))
+              : studies.slice(0, INITIAL_ITEMS_COUNT).map((study) => (
+                  <StudyCard 
+                    key={study.id} 
+                    study={study} 
+                    onClick={setSelectedStudy}
+                  />
+                ))
+            }
+          </div>
+        )}
         
         {/* Show All Button */}
-        {((activeTab === 'certifications' && certifications.length > INITIAL_ITEMS_COUNT) || 
-          (activeTab === 'studies' && studies.length > INITIAL_ITEMS_COUNT)) && (
+        {(isMobile || ((activeTab === 'certifications' && certifications.length > INITIAL_ITEMS_COUNT) || 
+          (activeTab === 'studies' && studies.length > INITIAL_ITEMS_COUNT))) && (
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-sm sm:text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm mx-4"
           >
-            ✨ Show All {activeTab === 'certifications' ? 'Certifications' : 'Education'} ({activeTab === 'certifications' ? certifications.length : studies.length})
+            ✨ {isMobile ? `Explore All ${activeTab === 'certifications' ? certifications.length : studies.length} ${activeTab === 'certifications' ? 'Certifications' : 'Studies'}` : `Show All ${activeTab === 'certifications' ? 'Certifications' : 'Education'} (${activeTab === 'certifications' ? certifications.length : studies.length})`}
           </button>
         )}
       </div>
