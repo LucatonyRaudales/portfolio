@@ -197,6 +197,11 @@ const ProjectCard = ({ title, description, image, roles, onClick }: Project & { 
           <RoleBadges roles={roles} />
         </div>
         
+        {/* Project Description */}
+        <p className="text-gray-300 text-sm leading-relaxed mb-3 line-clamp-2 text-center">
+          {description}
+        </p>
+        
         <div className="flex items-center justify-between">
           <div className="flex space-x-1">
             <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
