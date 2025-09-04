@@ -13,6 +13,7 @@ interface Experience {
   achievements: string[];
   technologies: string[];
   logo?: string;
+  icon: string;
 }
 
 // Data
@@ -31,7 +32,8 @@ const experiences: Experience[] = [
       'Led migration of legacy systems to cloud-native architecture',
       'Established security best practices reducing vulnerabilities by 85%'
     ],
-    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Jenkins', 'Docker', 'Python', 'Go']
+    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Jenkins', 'Docker', 'Python', 'Go'],
+    icon: '☁️'
   },
   {
     id: 'cybersecurity-specialist',
@@ -47,7 +49,8 @@ const experiences: Experience[] = [
       'Led incident response team during major security breach',
       'Implemented zero-trust architecture for client networks'
     ],
-    technologies: ['Python', 'Metasploit', 'Burp Suite', 'SIEM', 'Firewalls', 'IDS/IPS']
+    technologies: ['Python', 'Metasploit', 'Burp Suite', 'SIEM', 'Firewalls', 'IDS/IPS'],
+    icon: '🔒'
   },
   {
     id: 'full-stack-developer',
@@ -63,7 +66,8 @@ const experiences: Experience[] = [
       'Implemented real-time features using WebSockets',
       'Optimized application performance reducing load times by 50%'
     ],
-    technologies: ['React', 'Node.js', 'MongoDB', 'React Native', 'TypeScript', 'AWS']
+    technologies: ['React', 'Node.js', 'MongoDB', 'React Native', 'TypeScript', 'AWS'],
+    icon: '💻'
   },
   {
     id: 'software-engineer-intern',
@@ -79,7 +83,8 @@ const experiences: Experience[] = [
       'Contributed to code reviews and testing',
       'Learned modern development tools and practices'
     ],
-    technologies: ['JavaScript', 'React', 'Express.js', 'PostgreSQL', 'Git']
+    technologies: ['JavaScript', 'React', 'Express.js', 'PostgreSQL', 'Git'],
+    icon: '🚀'
   }
 ];
 
@@ -142,60 +147,55 @@ const TypeBadge = ({ type }: { type: string }) => {
 };
 
 const ExperienceCard = ({ experience, onClick }: { experience: Experience; onClick: (experience: Experience) => void }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <div 
       onClick={() => onClick(experience)}
-      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-4xl mx-auto transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
+      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[400px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
     >
-      <div className="p-6 text-center">
-        <div className="mb-4">
+      <div className="p-6">
+        {/* Header */}
+        <div className="text-center mb-4">
           <div className="flex justify-center mb-3">
+            <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
+              {experience.icon}
+            </div>
+          </div>
+          
+          <div className="flex justify-center mb-2">
             <TypeBadge type={experience.type} />
           </div>
-          <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300 mb-2">
+          
+          <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
             {experience.title}
           </h3>
-          <p className="text-blue-300 text-lg font-semibold mb-1">{experience.company}</p>
-          <p className="text-gray-400 text-sm mb-2">{experience.location} • {experience.period}</p>
+          
+          <p className="text-blue-400 font-semibold text-sm mb-1">{experience.company}</p>
+          <p className="text-gray-400 text-xs mb-3">{experience.location} • {experience.period}</p>
         </div>
         
-        <p className="text-gray-200 text-sm leading-relaxed mb-4">{experience.description}</p>
+        {/* Description */}
+        <p className="text-gray-300 text-sm leading-relaxed mb-4 text-center line-clamp-3">
+          {experience.description}
+        </p>
         
-        <div className="mb-4">
-          <h4 className="text-white text-sm font-semibold mb-2">Key Technologies:</h4>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {experience.technologies.map((tech, index) => (
-              <span key={index} className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300 border border-white/20 hover:bg-white/20 transition-colors duration-300">
-                {tech}
-              </span>
-            ))}
-          </div>
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-1.5 justify-center mb-4">
+          {experience.technologies.slice(0, 4).map((tech, index) => (
+            <span key={index} className="px-2 py-1 bg-white/10 text-white text-xs rounded-full border border-white/20">
+              {tech}
+            </span>
+          ))}
+          {experience.technologies.length > 4 && (
+            <span className="px-2 py-1 bg-white/10 text-white text-xs rounded-full border border-white/20">
+              +{experience.technologies.length - 4}
+            </span>
+          )}
         </div>
         
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="text-blue-300 text-sm font-medium hover:text-white transition-colors duration-300 flex items-center space-x-2 mx-auto"
-        >
-          <span>{isExpanded ? 'Hide' : 'Show'} Achievements</span>
-          <span className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
-            ▼
-          </span>
-        </button>
-        
-        <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[500px] mt-4' : 'max-h-0'}`}>
-          <div className="space-y-3 text-left">
-            <h4 className="text-white text-sm font-semibold text-center">Key Achievements:</h4>
-            <ul className="space-y-2">
-              {experience.achievements.map((achievement, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <span className="text-green-400 text-sm mt-1">✓</span>
-                  <span className="text-gray-200 text-sm">{achievement}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Click indicator */}
+        <div className="flex items-center justify-center space-x-2 text-blue-300 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <span className="text-xs font-medium">Click for details</span>
+          <span className="text-sm">→</span>
         </div>
       </div>
     </div>
@@ -289,36 +289,26 @@ const ExperienceDetailModal = ({ experience, isOpen, onClose }: { experience: Ex
 
 const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
+  
   return (
     <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
-      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-8">
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-6">
         <h1 className="text-4xl font-bold text-white mb-4">
           Professional Experience
         </h1>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
           Click on any experience to view detailed information
         </p>
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-20 w-full max-w-5xl px-6">
-        <div className="space-y-6 w-full">
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16 w-full max-w-7xl px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
           {experiences.map((experience, index) => (
-            <div key={experience.id} className="relative">
-              {/* Timeline line */}
-              {index < experiences.length - 1 && (
-                <div className="absolute left-8 top-20 w-0.5 h-16 bg-gradient-to-b from-blue-400 to-purple-400 opacity-30"></div>
-              )}
-              
-              {/* Timeline dot */}
-              <div className="absolute left-6 top-6 w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full border-2 border-white/20"></div>
-              
-              <div className="ml-16">
-                <ExperienceCard 
-                  experience={experience} 
-                  onClick={setSelectedExperience}
-                />
-              </div>
-            </div>
+            <ExperienceCard 
+              key={experience.id}
+              experience={experience} 
+              onClick={setSelectedExperience}
+            />
           ))}
         </div>
       </div>
