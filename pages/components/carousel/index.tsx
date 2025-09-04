@@ -78,26 +78,83 @@ const RoleBadges = ({ roles }: { roles: RoleType[] }) => (
 
 // Modal Component
 const ProjectModal = ({ isOpen, onClose, projects }: { isOpen: boolean; onClose: () => void; projects: Project[] }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterRole, setFilterRole] = useState<RoleType | 'all'>('all');
+
   if (!isOpen) return null;
+
+  const filteredProjects = projects.filter(project => {
+    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         project.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRole = filterRole === 'all' || project.roles.includes(filterRole);
+    return matchesSearch && matchesRole;
+  });
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900/95 backdrop-blur-md border border-white/20 rounded-2xl max-w-7xl w-full max-h-[85vh] overflow-hidden shadow-2xl">
-        <div className="p-6 border-b border-white/20 flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-white">All Projects</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors text-3xl font-light hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center"
-          >
-            ×
-          </button>
-        </div>
-        <div className="p-6 overflow-y-auto max-h-[calc(85vh-120px)]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
+      <div className="bg-gray-900/95 backdrop-blur-md border border-white/20 rounded-2xl max-w-7xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+        <div className="p-6 border-b border-white/20">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold text-white">All Projects ({projects.length})</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-white transition-colors text-3xl font-light hover:bg-white/10 rounded-full w-10 h-10 flex items-center justify-center"
+            >
+              ×
+            </button>
           </div>
+          
+          {/* Search and Filter */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors duration-300"
+              />
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setFilterRole('all')}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  filterRole === 'all'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }`}
+              >
+                All
+              </button>
+              {getAllRoles().map((role) => (
+                <button
+                  key={role}
+                  onClick={() => setFilterRole(role)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    filterRole === role
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                  }`}
+                >
+                  {role.split(' ')[0]}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={index} {...project} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-400 text-lg">No projects found matching your criteria.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -150,6 +207,7 @@ const getAllRoles = (): RoleType[] => Object.keys(ROLE_CONFIG) as RoleType[];
 
 const Carousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const INITIAL_PROJECTS_COUNT = 4;
   
   const projects: Project[] = [
@@ -227,7 +285,7 @@ const Carousel = () => {
 
   return (
     <div className="h-full flex flex-col justify-center items-center relative">
-      <div className="text-center h-1/3 items-center relative z-20 w-full flex flex-col justify-center">
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center">
         <h1 className="text-4xl font-bold text-white mb-4">
           My Latest Projects
         </h1>

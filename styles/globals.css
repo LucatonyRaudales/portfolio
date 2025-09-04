@@ -12,3 +12,61 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+/* Enhanced scrolling behavior */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 0;
+}
+
+/* Custom scroll snap behavior */
+.snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+/* Smooth transitions for better UX */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for better visual feedback */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.8);
+}
+
+/* Smooth fade-in animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Enhanced focus states for accessibility */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.8);
+    outline-offset: 2px;
+}

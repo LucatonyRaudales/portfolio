@@ -1,15 +1,33 @@
 import First from "./components/Introduction";
-import Initialize from "./components/Introduction";
+import ProjectsSection from "./components/Projects";
+import CertificationsSection from "./components/Certifications";
+import SkillsSection from "./components/Skills";
+import ExperienceSection from "./components/Experience";
 import DevOpsSection from "./components/DevOps";
 import BackendSection from "./components/Backend";
 import FrontendSection from "./components/Frontend";
-import ProjectsSection from "./components/Projects";
+import Navigation from "./components/Navigation";
 
 export default function Home() {
+  const sections = [
+    'Introduction',
+    'Projects',
+    'Certifications',
+    'Skills',
+    'Experience',
+    'DevOps',
+    'Backend',
+    'Frontend'
+  ];
+
   return (
-    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
+    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-y-auto overflow-x-hidden scrollbar-hide scroll-smooth">
+      <Navigation sections={sections} />
       <First />
       <ProjectsSection />
+      <CertificationsSection />
+      <SkillsSection />
+      <ExperienceSection />
       <DevOpsSection />
       <BackendSection />
       <FrontendSection />
