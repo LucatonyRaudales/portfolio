@@ -289,10 +289,13 @@ const ExperienceDetailModal = ({ experience, isOpen, onClose }: { experience: Ex
 
 const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const INITIAL_ITEMS_COUNT = 3;
   
   return (
     <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
-      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-6">
+      {/* Header Section */}
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">
           Professional Experience
         </h1>
@@ -301,9 +304,10 @@ const ExperienceSection = () => {
         </p>
       </div>
       
+      {/* Content Section */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16 w-full max-w-7xl px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
-          {experiences.map((experience, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full mb-8">
+          {experiences.slice(0, INITIAL_ITEMS_COUNT).map((experience, index) => (
             <ExperienceCard 
               key={experience.id}
               experience={experience} 
@@ -311,23 +315,42 @@ const ExperienceSection = () => {
             />
           ))}
         </div>
+        
+        {/* Show All Button */}
+        {experiences.length > INITIAL_ITEMS_COUNT && (
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm"
+          >
+            ✨ Show All Experiences ({experiences.length})
+          </button>
+        )}
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center text-gray-400">
-          <span className="text-sm mb-2">Scroll Down</span>
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-
       <ExperienceDetailModal 
         experience={selectedExperience}
         isOpen={selectedExperience !== null}
         onClose={() => setSelectedExperience(null)}
       />
+
+      {/* Show All Modal */}
+      <AnimatedModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="All Professional Experiences" size="xl">
+        <div className="space-y-6">
+          {/* All Experiences Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {experiences.map((experience, index) => (
+              <ExperienceCard 
+                key={experience.id}
+                experience={experience} 
+                onClick={(experience) => {
+                  setSelectedExperience(experience);
+                  setIsModalOpen(false);
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </AnimatedModal>
     </div>
   );
 };

@@ -173,7 +173,7 @@ const ProjectCard = ({ title, description, image, roles, onClick }: Project & { 
   return (
     <div 
       onClick={onClick}
-      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[280px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
+      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[400px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
     >
       <div className="relative overflow-hidden">
         <img 
@@ -296,7 +296,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: { project: Project | n
 const Carousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const INITIAL_PROJECTS_COUNT = 4;
+  const INITIAL_PROJECTS_COUNT = 3;
   
   const projects: Project[] = [
     {
@@ -372,12 +372,13 @@ const Carousel = () => {
   ];
 
   return (
-    <div className="h-full flex flex-col justify-center items-center relative">
-      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center">
+    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
+      {/* Header Section */}
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">
           My Latest Projects
         </h1>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
           Explore the innovative solutions I've built across various industries
         </p>
         
@@ -391,8 +392,10 @@ const Carousel = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6 mb-8 justify-items-center">
+      
+      {/* Content Section */}
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
           {projects.slice(0, INITIAL_PROJECTS_COUNT).map((project, index) => (
             <ProjectCard
               key={index}
@@ -408,6 +411,7 @@ const Carousel = () => {
           ))}
         </div>
         
+        {/* Show All Button */}
         {projects.length > INITIAL_PROJECTS_COUNT && (
           <button
             onClick={() => setIsModalOpen(true)}
@@ -417,6 +421,7 @@ const Carousel = () => {
           </button>
         )}
       </div>
+      
       
       <ProjectModal 
         isOpen={isModalOpen} 

@@ -12,6 +12,7 @@ interface Certification {
   category: 'cloud' | 'security' | 'development' | 'devops';
   description: string;
   skills: string[];
+  icon: string;
 }
 
 interface Study {
@@ -23,6 +24,8 @@ interface Study {
   image: string;
   description: string;
   skills: string[];
+  icon: string;
+  duration: string;
 }
 
 // Data
@@ -36,7 +39,8 @@ const certifications: Certification[] = [
     image: '/aws-logo.png',
     category: 'cloud',
     description: 'Demonstrates ability to design and deploy scalable systems on AWS.',
-    skills: ['AWS', 'Cloud Architecture', 'EC2', 'S3', 'RDS', 'Lambda']
+    skills: ['AWS', 'Cloud Architecture', 'EC2', 'S3', 'RDS', 'Lambda'],
+    icon: '☁️'
   },
   {
     id: 'azure-fundamentals',
@@ -46,7 +50,8 @@ const certifications: Certification[] = [
     image: '/azure-logo.png',
     category: 'cloud',
     description: 'Foundational knowledge of cloud services and Azure platform.',
-    skills: ['Azure', 'Cloud Computing', 'Virtual Machines', 'Storage']
+    skills: ['Azure', 'Cloud Computing', 'Virtual Machines', 'Storage'],
+    icon: '☁️'
   },
   {
     id: 'cissp',
@@ -56,7 +61,8 @@ const certifications: Certification[] = [
     image: '/cissp-logo.png',
     category: 'security',
     description: 'Advanced certification in information security management.',
-    skills: ['Security Management', 'Risk Assessment', 'Security Architecture', 'Incident Response']
+    skills: ['Security Management', 'Risk Assessment', 'Security Architecture', 'Incident Response'],
+    icon: '🔒'
   },
   {
     id: 'ckad',
@@ -66,7 +72,8 @@ const certifications: Certification[] = [
     image: '/kubernetes-logo.png',
     category: 'devops',
     description: 'Proficiency in designing, building, and deploying applications on Kubernetes.',
-    skills: ['Kubernetes', 'Container Orchestration', 'Docker', 'Microservices']
+    skills: ['Kubernetes', 'Container Orchestration', 'Docker', 'Microservices'],
+    icon: '⚙️'
   }
 ];
 
@@ -79,7 +86,9 @@ const studies: Study[] = [
     type: 'degree',
     image: '/university-logo.png',
     description: 'Comprehensive study of computer science fundamentals, algorithms, and software engineering.',
-    skills: ['Algorithms', 'Data Structures', 'Software Engineering', 'Database Systems', 'Operating Systems']
+    skills: ['Algorithms', 'Data Structures', 'Software Engineering', 'Database Systems', 'Operating Systems'],
+    icon: '🎓',
+    duration: '4 years'
   },
   {
     id: 'cybersecurity-bootcamp',
@@ -89,7 +98,9 @@ const studies: Study[] = [
     type: 'bootcamp',
     image: '/tech-academy-logo.png',
     description: 'Intensive 6-month program covering ethical hacking, penetration testing, and security analysis.',
-    skills: ['Ethical Hacking', 'Penetration Testing', 'Network Security', 'Forensics', 'Incident Response']
+    skills: ['Ethical Hacking', 'Penetration Testing', 'Network Security', 'Forensics', 'Incident Response'],
+    icon: '🔐',
+    duration: '6 months'
   }
 ];
 
@@ -415,19 +426,22 @@ const CertificationsSection = () => {
   const [activeTab, setActiveTab] = useState<'certifications' | 'studies'>('certifications');
   const [selectedCertification, setSelectedCertification] = useState<Certification | null>(null);
   const [selectedStudy, setSelectedStudy] = useState<Study | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const INITIAL_ITEMS_COUNT = 3;
 
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
-      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-8">
+    <div className="snap-start snap-section h-screen w-full flex flex-col items-center relative overflow-hidden">
+      {/* Header Section */}
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">
           Certifications & Education
         </h1>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
           Click on any certification or study to view detailed information
         </p>
         
         {/* Tab Navigation */}
-        <div className="flex bg-white/10 backdrop-blur-md rounded-full p-1 border border-white/20 mb-8">
+        <div className="flex bg-white/10 backdrop-blur-md rounded-full p-1 border border-white/20 mb-6">
           <button
             onClick={() => setActiveTab('certifications')}
             className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
@@ -451,17 +465,18 @@ const CertificationsSection = () => {
         </div>
       </div>
       
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-20">
+      {/* Content Section */}
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
           {activeTab === 'certifications' 
-            ? certifications.map((cert) => (
+            ? certifications.slice(0, INITIAL_ITEMS_COUNT).map((cert) => (
                 <CertificationCard 
                   key={cert.id} 
                   certification={cert} 
                   onClick={setSelectedCertification}
                 />
               ))
-            : studies.map((study) => (
+            : studies.slice(0, INITIAL_ITEMS_COUNT).map((study) => (
                 <StudyCard 
                   key={study.id} 
                   study={study} 
@@ -470,18 +485,19 @@ const CertificationsSection = () => {
               ))
           }
         </div>
+        
+        {/* Show All Button */}
+        {((activeTab === 'certifications' && certifications.length > INITIAL_ITEMS_COUNT) || 
+          (activeTab === 'studies' && studies.length > INITIAL_ITEMS_COUNT)) && (
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm"
+          >
+            ✨ Show All {activeTab === 'certifications' ? 'Certifications' : 'Education'} ({activeTab === 'certifications' ? certifications.length : studies.length})
+          </button>
+        )}
       </div>
       
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="flex flex-col items-center text-gray-400">
-          <span className="text-sm mb-2">Scroll Down</span>
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-
       <CertificationDetailModal 
         certification={selectedCertification}
         isOpen={selectedCertification !== null}
@@ -493,6 +509,61 @@ const CertificationsSection = () => {
         isOpen={selectedStudy !== null}
         onClose={() => setSelectedStudy(null)}
       />
+
+      {/* Show All Modal */}
+      <AnimatedModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={`All ${activeTab === 'certifications' ? 'Certifications' : 'Education'}`} size="xl">
+        <div className="space-y-6">
+          {/* Tab Navigation in Modal */}
+          <div className="flex bg-white/10 backdrop-blur-md rounded-full p-1 border border-white/20 mb-6">
+            <button
+              onClick={() => setActiveTab('certifications')}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                activeTab === 'certifications'
+                  ? 'bg-blue-500 text-white shadow-lg'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              🏆 Certifications
+            </button>
+            <button
+              onClick={() => setActiveTab('studies')}
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                activeTab === 'studies'
+                  ? 'bg-green-500 text-white shadow-lg'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              🎓 Education
+            </button>
+          </div>
+
+          {/* All Items Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activeTab === 'certifications' 
+              ? certifications.map((cert) => (
+                  <CertificationCard 
+                    key={cert.id} 
+                    certification={cert} 
+                    onClick={(cert) => {
+                      setSelectedCertification(cert);
+                      setIsModalOpen(false);
+                    }}
+                  />
+                ))
+              : studies.map((study) => (
+                  <StudyCard 
+                    key={study.id} 
+                    study={study} 
+                    onClick={(study) => {
+                      setSelectedStudy(study);
+                      setIsModalOpen(false);
+                    }}
+                  />
+                ))
+            }
+          </div>
+        </div>
+      </AnimatedModal>
     </div>
   );
 };
