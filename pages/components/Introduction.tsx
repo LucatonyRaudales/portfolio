@@ -20,17 +20,17 @@ const First = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
         {/* Floating icons */}
-        <div className="absolute top-1/4 left-1/4 text-purple-400/30 animate-bounce" style={{animationDelay: '0.5s'}}>
+        <div className="absolute top-1/4 left-1/4 text-purple-400/30 animate-bounce" style={{ animationDelay: '0.5s' }}>
           <FaCode size={40} />
         </div>
-        <div className="absolute top-1/3 right-1/4 text-blue-400/30 animate-bounce" style={{animationDelay: '1.5s'}}>
+        <div className="absolute top-1/3 right-1/4 text-blue-400/30 animate-bounce" style={{ animationDelay: '1.5s' }}>
           <FaShieldAlt size={35} />
         </div>
-        <div className="absolute bottom-1/3 left-1/3 text-cyan-400/30 animate-bounce" style={{animationDelay: '2.5s'}}>
+        <div className="absolute bottom-1/3 left-1/3 text-cyan-400/30 animate-bounce" style={{ animationDelay: '2.5s' }}>
           <FaRocket size={30} />
         </div>
       </div>
@@ -70,7 +70,7 @@ const First = () => {
               options={{
                 strings: [
                   "🚀 Full-Stack Software Engineer",
-                  "🔒 Cybersecurity & DevSecOps Expert", 
+                  "🔒 Cybersecurity & DevSecOps Expert",
                   "☁️ Cloud Infrastructure Specialist",
                   "💡 Startup Founder & Entrepreneur",
                   "🛡️ Protecting Companies from Cyber Threats",
@@ -97,8 +97,8 @@ const First = () => {
             <GrLinkedin color="white" size={28} className="group-hover:text-blue-300 transition-colors duration-300" />
             <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
           </button>
-          
-          <button 
+
+          <button
             onClick={() => window.open("https://twitter.com/LucatonnyR", "_blank", "noopener,noreferrer")}
             className="group relative p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 hover:scale-110 hover:bg-cyan-500/20 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-500/25"
           >
