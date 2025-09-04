@@ -14,6 +14,7 @@ interface SkillCategory {
   name: string;
   icon: string;
   color: string;
+  description: string;
   skills: Skill[];
 }
 
@@ -23,6 +24,7 @@ const skillsData: SkillCategory[] = [
     name: 'Frontend Development',
     icon: '🎨',
     color: 'blue',
+    description: 'Modern web development with React, TypeScript, and responsive design',
     skills: [
       { name: 'React', level: 95, category: 'frontend', icon: '⚛️', description: 'Advanced React development with hooks, context, and performance optimization' },
       { name: 'TypeScript', level: 90, category: 'frontend', icon: '📘', description: 'Strong typing and modern JavaScript features' },
@@ -35,6 +37,7 @@ const skillsData: SkillCategory[] = [
     name: 'Backend Development',
     icon: '⚙️',
     color: 'green',
+    description: 'Server-side development with Node.js, Go, Python, and modern APIs',
     skills: [
       { name: 'Node.js', level: 92, category: 'backend', icon: '🟢', description: 'Server-side JavaScript runtime' },
       { name: 'Go', level: 85, category: 'backend', icon: '🐹', description: 'High-performance systems programming' },
@@ -47,6 +50,7 @@ const skillsData: SkillCategory[] = [
     name: 'DevOps & Cloud',
     icon: '☁️',
     color: 'purple',
+    description: 'Cloud infrastructure, containerization, and CI/CD automation',
     skills: [
       { name: 'AWS', level: 90, category: 'cloud', icon: '☁️', description: 'Amazon Web Services cloud platform' },
       { name: 'Kubernetes', level: 85, category: 'devops', icon: '⚓', description: 'Container orchestration platform' },
@@ -59,6 +63,7 @@ const skillsData: SkillCategory[] = [
     name: 'Security',
     icon: '🔒',
     color: 'red',
+    description: 'Cybersecurity, penetration testing, and security architecture',
     skills: [
       { name: 'Penetration Testing', level: 85, category: 'security', icon: '🎯', description: 'Ethical hacking and vulnerability assessment' },
       { name: 'Security Architecture', level: 88, category: 'security', icon: '🏛️', description: 'Designing secure systems and networks' },
@@ -70,6 +75,7 @@ const skillsData: SkillCategory[] = [
     name: 'Database & Tools',
     icon: '🗄️',
     color: 'yellow',
+    description: 'Database management, version control, and development tools',
     skills: [
       { name: 'PostgreSQL', level: 85, category: 'database', icon: '🐘', description: 'Advanced relational database management' },
       { name: 'MongoDB', level: 80, category: 'database', icon: '🍃', description: 'NoSQL document database' },

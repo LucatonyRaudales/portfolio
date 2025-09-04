@@ -167,7 +167,7 @@ const AboutSection: React.FC = () => {
                   🚀 My Entrepreneurial Journey
                 </h2>
                 <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  I've built and scaled multiple technology companies, from early-stage startups to a successful cybersecurity firm. My journey spans product development, business strategy, team building, and market expansion across different industries.
+                  I&apos;ve built and scaled multiple technology companies, from early-stage startups to a successful cybersecurity firm. My journey spans product development, business strategy, team building, and market expansion across different industries.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 mb-6">
                   <div className="bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 text-green-300 text-sm font-semibold">

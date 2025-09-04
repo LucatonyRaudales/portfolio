@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+
+import Image from 'next/image';
 import AnimatedModal from '../AnimatedModal';
 
 // Types
@@ -174,10 +176,12 @@ const ProjectCard = ({ title, description, image, roles, onClick }: Project & { 
       className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[400px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
     >
       <div className="relative overflow-hidden">
-        <img
+        <Image
           className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-110"
           src={image}
           alt={title}
+          width={400}
+          height={160}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0">
@@ -227,10 +231,12 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: { project: Project | n
       <div className="space-y-6">
         {/* Project Image */}
         <div className="relative overflow-hidden rounded-xl">
-          <img
+          <Image
             src={project.image}
             alt={project.title}
             className="w-full h-64 object-cover"
+            width={600}
+            height={256}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
@@ -406,7 +412,7 @@ const Carousel = () => {
           My Latest Projects
         </h1>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
-          Explore the innovative solutions I've built across various industries
+          Explore the innovative solutions I&apos;ve built across various industries
         </p>
 
         {/* Role Legend - Only show on desktop */}
@@ -432,7 +438,7 @@ const Carousel = () => {
                 🚀 Innovative Projects
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I've built cutting-edge solutions across various industries, from cryptocurrency platforms to document management systems. Each project showcases my expertise in software engineering, DevOps, and cybersecurity.
+                I&apos;ve built cutting-edge solutions across various industries, from cryptocurrency platforms to document management systems. Each project showcases my expertise in software engineering, DevOps, and cybersecurity.
               </p>
               
               {/* Role highlights */}

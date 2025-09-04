@@ -4,39 +4,32 @@ interface NavigationProps {
   sections: string[];
 }
 
-const Navigation = ({ sections }: NavigationProps) => {
+const Navigation = ({ sections = [] }: NavigationProps) => {
   const [activeSection, setActiveSection] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Check if we're in the browser
+    if (typeof window === 'undefined') return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const currentSection = Math.round(scrollPosition / windowHeight);
       
       setActiveSection(currentSection);
-      
-      // Hide navigation when scrolling fast
-      setIsVisible(false);
-      setTimeout(() => setIsVisible(true), 1000);
     };
 
-    const handleWheel = (e: WheelEvent) => {
-      // Hide navigation during wheel scroll
-      setIsVisible(false);
-      setTimeout(() => setIsVisible(true), 1500);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('wheel', handleWheel);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('wheel', handleWheel);
     };
   }, []);
 
   const scrollToSection = (index: number) => {
+    if (typeof window === 'undefined') return;
+    
     const targetY = index * window.innerHeight;
     window.scrollTo({
       top: targetY,
@@ -44,8 +37,13 @@ const Navigation = ({ sections }: NavigationProps) => {
     });
   };
 
+  // Don't render if no sections provided
+  if (!sections || sections.length === 0) {
+    return null;
+  }
+
   return (
-    <div className={`fixed right-6 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+    <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-500 opacity-100">
       <div className="flex flex-col space-y-3">
         {sections.map((section, index) => (
           <button

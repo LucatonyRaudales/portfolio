@@ -56,7 +56,7 @@ const First = () => {
         {/* Greeting with enhanced styling */}
         <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
-            Hi there! 👋 I'm
+            Hi there! 👋 I&apos;m
           </h1>
           <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4 animate-pulse">
             Tony R. Raudales

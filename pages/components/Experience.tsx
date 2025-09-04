@@ -341,7 +341,7 @@ const ExperienceSection = () => {
                 💼 Professional Experience
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                I've built a diverse career spanning DevOps engineering, cybersecurity, and full-stack development. My experience includes leading cloud infrastructure projects, implementing security measures, and developing innovative solutions for various industries.
+                I&apos;ve built a diverse career spanning DevOps engineering, cybersecurity, and full-stack development. My experience includes leading cloud infrastructure projects, implementing security measures, and developing innovative solutions for various industries.
               </p>
               <div className="flex flex-wrap justify-center gap-3 mb-6">
                 <div className="bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-2 text-blue-300 text-sm font-semibold">
