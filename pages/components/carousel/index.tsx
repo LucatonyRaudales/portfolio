@@ -372,7 +372,24 @@ const Carousel = () => {
   ];
 
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
+    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+      {/* Dynamic background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-pink-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '3s'}}></div>
+        
+        {/* Floating project icons */}
+        <div className="absolute top-1/4 left-1/4 text-blue-400/20 animate-bounce" style={{animationDelay: '0.5s'}}>
+          <div className="text-4xl">💻</div>
+        </div>
+        <div className="absolute top-1/3 right-1/4 text-purple-400/20 animate-bounce" style={{animationDelay: '2s'}}>
+          <div className="text-3xl">🚀</div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 text-pink-400/20 animate-bounce" style={{animationDelay: '3.5s'}}>
+          <div className="text-3xl">⚡</div>
+        </div>
+      </div>
       {/* Header Section */}
       <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">
@@ -397,18 +414,18 @@ const Carousel = () => {
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
           {projects.slice(0, INITIAL_PROJECTS_COUNT).map((project, index) => (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-              image={project.image}
+          <ProjectCard
+            key={index}
+            title={project.title}
+            description={project.description}
+            image={project.image}
               roles={project.roles}
               onClick={() => {
                 setSelectedProject(project);
                 setIsModalOpen(true);
               }}
-            />
-          ))}
+          />
+        ))}
         </div>
         
         {/* Show All Button */}

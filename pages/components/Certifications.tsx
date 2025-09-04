@@ -430,7 +430,24 @@ const CertificationsSection = () => {
   const INITIAL_ITEMS_COUNT = 3;
 
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col items-center relative overflow-hidden">
+    <div className="snap-start snap-section h-screen w-full flex flex-col items-center relative overflow-hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900">
+      {/* Dynamic background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
+        
+        {/* Floating certification icons */}
+        <div className="absolute top-1/4 left-1/4 text-emerald-400/20 animate-bounce" style={{animationDelay: '1s'}}>
+          <div className="text-4xl">🎓</div>
+        </div>
+        <div className="absolute top-1/3 right-1/4 text-teal-400/20 animate-bounce" style={{animationDelay: '2.5s'}}>
+          <div className="text-3xl">🏆</div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 text-cyan-400/20 animate-bounce" style={{animationDelay: '4s'}}>
+          <div className="text-3xl">📚</div>
+        </div>
+      </div>
       {/* Header Section */}
       <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">

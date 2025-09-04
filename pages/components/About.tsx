@@ -114,12 +114,23 @@ const AboutSection: React.FC = () => {
   };
 
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Animated background elements */}
+    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-zinc-900">
+      {/* Dynamic background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-slate-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gray-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '3.5s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-zinc-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '7s'}}></div>
+        
+        {/* Floating business icons */}
+        <div className="absolute top-1/4 left-1/4 text-slate-400/20 animate-bounce" style={{animationDelay: '2.5s'}}>
+          <div className="text-4xl">🚀</div>
+        </div>
+        <div className="absolute top-1/3 right-1/4 text-gray-400/20 animate-bounce" style={{animationDelay: '5s'}}>
+          <div className="text-3xl">💼</div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 text-zinc-400/20 animate-bounce" style={{animationDelay: '7.5s'}}>
+          <div className="text-3xl">🔒</div>
+        </div>
       </div>
 
       {/* Header Section */}

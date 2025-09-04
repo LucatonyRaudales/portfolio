@@ -415,7 +415,24 @@ const SkillsSection = () => {
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
 
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
+    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-blue-900 via-cyan-900 to-teal-900">
+      {/* Dynamic background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2.5s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-teal-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '5s'}}></div>
+        
+        {/* Floating skill icons */}
+        <div className="absolute top-1/4 left-1/4 text-blue-400/20 animate-bounce" style={{animationDelay: '1.5s'}}>
+          <div className="text-4xl">⚡</div>
+        </div>
+        <div className="absolute top-1/3 right-1/4 text-cyan-400/20 animate-bounce" style={{animationDelay: '3s'}}>
+          <div className="text-3xl">🔧</div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 text-teal-400/20 animate-bounce" style={{animationDelay: '4.5s'}}>
+          <div className="text-3xl">💡</div>
+        </div>
+      </div>
       <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-4">
           Technical Skills

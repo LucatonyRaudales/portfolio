@@ -293,7 +293,24 @@ const ExperienceSection = () => {
   const INITIAL_ITEMS_COUNT = 3;
   
   return (
-    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
+    <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-900">
+      {/* Dynamic background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl animate-pulse" style={{animationDelay: '6s'}}></div>
+        
+        {/* Floating experience icons */}
+        <div className="absolute top-1/4 left-1/4 text-violet-400/20 animate-bounce" style={{animationDelay: '2s'}}>
+          <div className="text-4xl">💼</div>
+        </div>
+        <div className="absolute top-1/3 right-1/4 text-purple-400/20 animate-bounce" style={{animationDelay: '4s'}}>
+          <div className="text-3xl">🏢</div>
+        </div>
+        <div className="absolute bottom-1/3 left-1/3 text-indigo-400/20 animate-bounce" style={{animationDelay: '6s'}}>
+          <div className="text-3xl">📈</div>
+        </div>
+      </div>
       {/* Header Section */}
       <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
         <h1 className="text-4xl font-bold text-white mb-4">
