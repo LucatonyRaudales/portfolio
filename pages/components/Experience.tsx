@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AnimatedModal from './AnimatedModal';
 
 // Types
 interface Experience {
@@ -140,30 +141,31 @@ const TypeBadge = ({ type }: { type: string }) => {
   );
 };
 
-const ExperienceCard = ({ experience }: { experience: Experience }) => {
+const ExperienceCard = ({ experience, onClick }: { experience: Experience; onClick: (experience: Experience) => void }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-4xl mx-auto transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15">
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <div className="flex items-center space-x-3 mb-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300">
-                {experience.title}
-              </h3>
-              <TypeBadge type={experience.type} />
-            </div>
-            <p className="text-blue-300 text-lg font-semibold mb-1">{experience.company}</p>
-            <p className="text-gray-400 text-sm mb-2">{experience.location} • {experience.period}</p>
+    <div 
+      onClick={() => onClick(experience)}
+      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-4xl mx-auto transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
+    >
+      <div className="p-6 text-center">
+        <div className="mb-4">
+          <div className="flex justify-center mb-3">
+            <TypeBadge type={experience.type} />
           </div>
+          <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors duration-300 mb-2">
+            {experience.title}
+          </h3>
+          <p className="text-blue-300 text-lg font-semibold mb-1">{experience.company}</p>
+          <p className="text-gray-400 text-sm mb-2">{experience.location} • {experience.period}</p>
         </div>
         
         <p className="text-gray-200 text-sm leading-relaxed mb-4">{experience.description}</p>
         
         <div className="mb-4">
           <h4 className="text-white text-sm font-semibold mb-2">Key Technologies:</h4>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 justify-center">
             {experience.technologies.map((tech, index) => (
               <span key={index} className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300 border border-white/20 hover:bg-white/20 transition-colors duration-300">
                 {tech}
@@ -174,7 +176,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-blue-300 text-sm font-medium hover:text-white transition-colors duration-300 flex items-center space-x-2"
+          className="text-blue-300 text-sm font-medium hover:text-white transition-colors duration-300 flex items-center space-x-2 mx-auto"
         >
           <span>{isExpanded ? 'Hide' : 'Show'} Achievements</span>
           <span className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
@@ -183,8 +185,8 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         </button>
         
         <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[500px] mt-4' : 'max-h-0'}`}>
-          <div className="space-y-3">
-            <h4 className="text-white text-sm font-semibold">Key Achievements:</h4>
+          <div className="space-y-3 text-left">
+            <h4 className="text-white text-sm font-semibold text-center">Key Achievements:</h4>
             <ul className="space-y-2">
               {experience.achievements.map((achievement, index) => (
                 <li key={index} className="flex items-start space-x-3">
@@ -200,7 +202,93 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
   );
 };
 
+// Experience Detail Modal
+const ExperienceDetailModal = ({ experience, isOpen, onClose }: { experience: Experience | null; isOpen: boolean; onClose: () => void }) => {
+  if (!experience) return null;
+
+  return (
+    <AnimatedModal isOpen={isOpen} onClose={onClose} title={experience.title} size="xl">
+      <div className="space-y-6">
+        {/* Experience Header */}
+        <div className="text-center">
+          <div className="text-6xl mb-4">{experience.icon}</div>
+          <h3 className="text-3xl font-bold text-white mb-2">{experience.title}</h3>
+          <p className="text-gray-300 text-lg">{experience.company}</p>
+          <p className="text-blue-400 text-sm font-medium">{experience.period}</p>
+        </div>
+
+        {/* Experience Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+            <h4 className="text-white font-semibold mb-3 flex items-center">
+              <span className="text-blue-400 mr-2">🏢</span>
+              Company
+            </h4>
+            <p className="text-gray-300">{experience.company}</p>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+            <h4 className="text-white font-semibold mb-3 flex items-center">
+              <span className="text-green-400 mr-2">📅</span>
+              Duration
+            </h4>
+            <p className="text-gray-300">{experience.period}</p>
+          </div>
+        </div>
+
+        {/* Technologies Used */}
+        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+          <h4 className="text-white font-semibold mb-4 flex items-center">
+            <span className="text-purple-400 mr-2">💻</span>
+            Technologies & Tools
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {experience.technologies.map((tech, index) => (
+              <span key={index} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-400/30">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Key Achievements */}
+        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+          <h4 className="text-white font-semibold mb-4 flex items-center">
+            <span className="text-yellow-400 mr-2">🏆</span>
+            Key Achievements
+          </h4>
+          <ul className="space-y-3">
+            {experience.achievements.map((achievement, index) => (
+              <li key={index} className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-gray-300 leading-relaxed">{achievement}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Description */}
+        <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+          <h4 className="text-white font-semibold mb-3">Role Description</h4>
+          <p className="text-gray-300 leading-relaxed">{experience.description}</p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex justify-center space-x-4 pt-6">
+          <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+            View Projects
+          </button>
+          <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
+            Contact for Reference
+          </button>
+        </div>
+      </div>
+    </AnimatedModal>
+  );
+};
+
 const ExperienceSection = () => {
+  const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
   return (
     <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden">
       <div className="text-center relative z-20 w-full flex flex-col justify-center items-center mb-8">
@@ -208,7 +296,7 @@ const ExperienceSection = () => {
           Professional Experience
         </h1>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-8">
-          A journey through diverse roles and impactful contributions
+          Click on any experience to view detailed information
         </p>
       </div>
       
@@ -225,7 +313,10 @@ const ExperienceSection = () => {
               <div className="absolute left-6 top-6 w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full border-2 border-white/20"></div>
               
               <div className="ml-16">
-                <ExperienceCard experience={experience} />
+                <ExperienceCard 
+                  experience={experience} 
+                  onClick={setSelectedExperience}
+                />
               </div>
             </div>
           ))}
@@ -241,6 +332,12 @@ const ExperienceSection = () => {
           </div>
         </div>
       </div>
+
+      <ExperienceDetailModal 
+        experience={selectedExperience}
+        isOpen={selectedExperience !== null}
+        onClose={() => setSelectedExperience(null)}
+      />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AnimatedModal from '../AnimatedModal';
 
 // Types
 type RoleType = "Software Engineer" | "DevOps/Cloud Engineer" | "Cybersecurity Engineer";
@@ -77,7 +78,7 @@ const RoleBadges = ({ roles }: { roles: RoleType[] }) => (
 );
 
 // Modal Component
-const ProjectModal = ({ isOpen, onClose, projects }: { isOpen: boolean; onClose: () => void; projects: Project[] }) => {
+const ProjectModal = ({ isOpen, onClose, projects, onProjectSelect }: { isOpen: boolean; onClose: () => void; projects: Project[]; onProjectSelect: (project: Project) => void }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterRole, setFilterRole] = useState<RoleType | 'all'>('all');
 
@@ -147,7 +148,14 @@ const ProjectModal = ({ isOpen, onClose, projects }: { isOpen: boolean; onClose:
           {filteredProjects.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
+                <ProjectCard 
+                  key={index} 
+                  {...project} 
+                  onClick={() => {
+                    onProjectSelect(project);
+                    onClose();
+                  }}
+                />
               ))}
             </div>
           ) : (
@@ -161,40 +169,42 @@ const ProjectModal = ({ isOpen, onClose, projects }: { isOpen: boolean; onClose:
   );
 };
 
-const ProjectCard = ({ title, description, image, roles }: Project) => {
+const ProjectCard = ({ title, description, image, roles, onClick }: Project & { onClick: () => void }) => {
   return (
-    <div className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[300px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15">
+    <div 
+      onClick={onClick}
+      className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-xl overflow-hidden w-full max-w-[280px] mx-auto transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 hover:border-white/40 hover:bg-white/15 cursor-pointer"
+    >
       <div className="relative overflow-hidden">
         <img 
-          className="w-full h-32 object-cover transition-transform duration-700 group-hover:scale-110" 
+          className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-110" 
           src={image} 
           alt={title} 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-3 group-hover:translate-y-0">
           <h3 className="text-white text-sm font-bold mb-1 drop-shadow-lg">{title}</h3>
         </div>
         <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform -translate-y-2 group-hover:translate-y-0">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
+          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
         </div>
       </div>
       <div className="p-4">
-        <h3 className="text-lg font-bold mb-3 text-white group-hover:hidden">{title}</h3>
+        <h3 className="text-lg font-bold mb-2 text-white group-hover:hidden">{title}</h3>
         
         {/* Role Badges */}
         <div className="mb-3">
           <RoleBadges roles={roles} />
         </div>
         
-        <p className="text-gray-200 text-sm leading-relaxed line-clamp-3 mb-4">{description}</p>
         <div className="flex items-center justify-between">
-          <div className="flex space-x-2">
-            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse shadow-lg"></div>
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg" style={{animationDelay: '0.2s'}}></div>
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse shadow-lg" style={{animationDelay: '0.4s'}}></div>
+          <div className="flex space-x-1">
+            <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+            <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+            <div className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
           </div>
-          <div className="text-blue-300 text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0">
-            View Project →
+          <div className="text-blue-300 text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-500">
+            Click to view →
           </div>
         </div>
       </div>
@@ -204,6 +214,79 @@ const ProjectCard = ({ title, description, image, roles }: Project) => {
 
 // Role Management Utilities
 const getAllRoles = (): RoleType[] => Object.keys(ROLE_CONFIG) as RoleType[];
+
+// Detailed Project Modal Component
+const ProjectDetailModal = ({ project, isOpen, onClose }: { project: Project | null; isOpen: boolean; onClose: () => void }) => {
+  if (!project) return null;
+
+  return (
+    <AnimatedModal isOpen={isOpen} onClose={onClose} title={project.title} size="lg">
+      <div className="space-y-6">
+        {/* Project Image */}
+        <div className="relative overflow-hidden rounded-xl">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-64 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        </div>
+
+        {/* Project Info */}
+        <div className="space-y-4">
+          <div className="flex flex-wrap gap-2 justify-center">
+            <RoleBadges roles={project.roles} />
+          </div>
+          
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Project Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+              <h4 className="text-white font-semibold mb-3 flex items-center">
+                <span className="text-blue-400 mr-2">💻</span>
+                Technologies Used
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {project.roles.map((role, index) => (
+                  <span key={index} className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-400/30">
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-xl p-6 border border-white/10">
+              <h4 className="text-white font-semibold mb-3 flex items-center">
+                <span className="text-green-400 mr-2">🚀</span>
+                Project Status
+              </h4>
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-green-300">Active & Maintained</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex justify-center space-x-4 pt-6">
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              View Live Demo
+            </button>
+            <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
+              View Source Code
+            </button>
+          </div>
+        </div>
+      </div>
+    </AnimatedModal>
+  );
+};
 
 const Carousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -312,6 +395,10 @@ const Carousel = () => {
               description={project.description}
               image={project.image}
               roles={project.roles}
+              onClick={() => {
+                setSelectedProject(project);
+                setIsModalOpen(true);
+              }}
             />
           ))}
         </div>
@@ -329,7 +416,14 @@ const Carousel = () => {
       <ProjectModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        projects={projects} 
+        projects={projects}
+        onProjectSelect={setSelectedProject}
+      />
+      
+      <ProjectDetailModal 
+        project={selectedProject}
+        isOpen={selectedProject !== null}
+        onClose={() => setSelectedProject(null)}
       />
     </div>
   );

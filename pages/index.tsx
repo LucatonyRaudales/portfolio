@@ -28,9 +28,9 @@ export default function Home() {
       <CertificationsSection />
       <SkillsSection />
       <ExperienceSection />
-      <DevOpsSection />
+      {/*<DevOpsSection />
       <BackendSection />
-      <FrontendSection />
+      <FrontendSection />*/}
     </div>
   );
 }
