@@ -4,9 +4,6 @@ import CertificationsSection from "./components/Certifications";
 import SkillsSection from "./components/Skills";
 import ExperienceSection from "./components/Experience";
 import AboutSection from "./components/About";
-import DevOpsSection from "./components/DevOps";
-import BackendSection from "./components/Backend";
-import FrontendSection from "./components/Frontend";
 import Navigation from "./components/Navigation";
 
 export default function Home() {
@@ -31,9 +28,6 @@ export default function Home() {
       <SkillsSection />
       <ExperienceSection />
       <AboutSection />
-      {/*<DevOpsSection />
-      <BackendSection />
-      <FrontendSection />*/}
     </div>
   );
 }
