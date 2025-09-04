@@ -150,7 +150,7 @@ const getAllRoles = (): RoleType[] => Object.keys(ROLE_CONFIG) as RoleType[];
 
 const Carousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const INITIAL_PROJECTS_COUNT = 3;
+  const INITIAL_PROJECTS_COUNT = 4;
   
   const projects: Project[] = [
     {
@@ -227,7 +227,7 @@ const Carousel = () => {
 
   return (
     <div className="h-full flex flex-col justify-center items-center relative">
-      <div className="text-center mb-8 relative z-20 w-full">
+      <div className="text-center h-1/3 items-center relative z-20 w-full flex flex-col justify-center">
         <h1 className="text-4xl font-bold text-white mb-4">
           My Latest Projects
         </h1>
@@ -245,8 +245,8 @@ const Carousel = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center">
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6 mb-8 justify-items-center">
           {projects.slice(0, INITIAL_PROJECTS_COUNT).map((project, index) => (
             <ProjectCard
               key={index}
