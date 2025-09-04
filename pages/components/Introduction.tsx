@@ -89,7 +89,7 @@ const First = () => {
         </div>
 
         {/* Enhanced social links */}
-        <div className={`flex justify-center space-x-8 mb-12 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <div className={`flex justify-center space-x-8 mb-8 transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <button
             onClick={() => window.open("https://www.linkedin.com/in/tony-raudales", "_blank", "noopener,noreferrer")}
             className="group relative p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 hover:scale-110 hover:bg-blue-500/20 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/25"
@@ -104,6 +104,28 @@ const First = () => {
           >
             <GrTwitter color="white" size={28} className="group-hover:text-cyan-300 transition-colors duration-300" />
             <div className="absolute -top-2 -right-2 w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+          </button>
+        </div>
+
+        {/* Resume Download Button */}
+        <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <button
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/resume/Resume - Tony Raudales.pdf';
+              link.download = 'Tony_Raudales_Resume.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
+            className="group relative bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 border border-purple-400/30 hover:border-purple-300/50"
+          >
+            <span className="flex items-center space-x-2">
+              <span className="text-lg">📄</span>
+              <span>Download Resume</span>
+              <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">↓</span>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
           </button>
         </div>
       </div>
