@@ -3,6 +3,7 @@ import ProjectsSection from "./components/Projects";
 import CertificationsSection from "./components/Certifications";
 import SkillsSection from "./components/Skills";
 import ExperienceSection from "./components/Experience";
+import AboutSection from "./components/About";
 import DevOpsSection from "./components/DevOps";
 import BackendSection from "./components/Backend";
 import FrontendSection from "./components/Frontend";
@@ -15,6 +16,7 @@ export default function Home() {
     'Certifications',
     'Skills',
     'Experience',
+    'About',
     'DevOps',
     'Backend',
     'Frontend'
@@ -28,6 +30,7 @@ export default function Home() {
       <CertificationsSection />
       <SkillsSection />
       <ExperienceSection />
+      <AboutSection />
       {/*<DevOpsSection />
       <BackendSection />
       <FrontendSection />*/}
