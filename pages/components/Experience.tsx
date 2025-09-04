@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AnimatedModal from './AnimatedModal';
 
 // Types
@@ -290,7 +290,17 @@ const ExperienceDetailModal = ({ experience, isOpen, onClose }: { experience: Ex
 const ExperienceSection = () => {
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const INITIAL_ITEMS_COUNT = 3;
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   return (
     <div className="snap-start snap-section h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-violet-900 via-purple-900 to-indigo-900">
@@ -323,23 +333,52 @@ const ExperienceSection = () => {
       
       {/* Content Section */}
       <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16 w-full max-w-7xl px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full mb-8">
-          {experiences.slice(0, INITIAL_ITEMS_COUNT).map((experience, index) => (
-            <ExperienceCard 
-              key={experience.id}
-              experience={experience} 
-              onClick={setSelectedExperience}
-            />
-          ))}
-        </div>
+        {isMobile ? (
+          /* Mobile: No cards, just centered content */
+          <div className="text-center px-6 mb-8 max-w-2xl">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                💼 Professional Experience
+              </h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                I've built a diverse career spanning DevOps engineering, cybersecurity, and full-stack development. My experience includes leading cloud infrastructure projects, implementing security measures, and developing innovative solutions for various industries.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <div className="bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-2 text-blue-300 text-sm font-semibold">
+                  ☁️ DevOps & Cloud
+                </div>
+                <div className="bg-green-500/20 border border-green-400/30 rounded-full px-4 py-2 text-green-300 text-sm font-semibold">
+                  🔒 Cybersecurity
+                </div>
+                <div className="bg-purple-500/20 border border-purple-400/30 rounded-full px-4 py-2 text-purple-300 text-sm font-semibold">
+                  💻 Full-Stack Development
+                </div>
+              </div>
+              <p className="text-gray-400 text-sm">
+                Tap the button below to explore all {experiences.length} professional experiences in detail
+              </p>
+            </div>
+          </div>
+        ) : (
+          /* Desktop: Show cards */
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 w-full mb-8">
+            {experiences.slice(0, INITIAL_ITEMS_COUNT).map((experience, index) => (
+              <ExperienceCard 
+                key={experience.id}
+                experience={experience} 
+                onClick={setSelectedExperience}
+              />
+            ))}
+          </div>
+        )}
         
         {/* Show All Button */}
-        {experiences.length > INITIAL_ITEMS_COUNT && (
+        {(isMobile || experiences.length > INITIAL_ITEMS_COUNT) && (
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-sm sm:text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm mx-4"
           >
-            ✨ Show All Experiences ({experiences.length})
+            ✨ {isMobile ? `Explore All ${experiences.length} Experiences` : `Show All Experiences (${experiences.length})`}
           </button>
         )}
       </div>
