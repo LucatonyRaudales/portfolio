@@ -1,52 +1,80 @@
-const RoleBadge = ({ role }: { role: string }) => {
-  const getRoleConfig = (role: string) => {
-    switch (role) {
-      case "Software Engineer":
-        return {
-          bg: "bg-blue-500/20",
-          border: "border-blue-400/50",
-          text: "text-blue-300",
-          icon: "💻",
-          glow: "shadow-blue-500/30"
-        };
-      case "DevOps/Cloud Engineer":
-        return {
-          bg: "bg-green-500/20",
-          border: "border-green-400/50",
-          text: "text-green-300",
-          icon: "☁️",
-          glow: "shadow-green-500/30"
-        };
-      case "Cybersecurity Engineer":
-        return {
-          bg: "bg-red-500/20",
-          border: "border-red-400/50",
-          text: "text-red-300",
-          icon: "🔒",
-          glow: "shadow-red-500/30"
-        };
-      default:
-        return {
-          bg: "bg-gray-500/20",
-          border: "border-gray-400/50",
-          text: "text-gray-300",
-          icon: "⚡",
-          glow: "shadow-gray-500/30"
-        };
-    }
+// Types
+type RoleType = "Software Engineer" | "DevOps/Cloud Engineer" | "Cybersecurity Engineer";
+
+interface RoleConfig {
+  bg: string;
+  border: string;
+  text: string;
+  icon: string;
+  glow: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  roles: RoleType[];
+}
+
+// Role Configuration
+const ROLE_CONFIG: Record<RoleType, RoleConfig> = {
+  "Software Engineer": {
+    bg: "bg-blue-500/20",
+    border: "border-blue-400/50",
+    text: "text-blue-300",
+    icon: "💻",
+    glow: "shadow-blue-500/30"
+  },
+  "DevOps/Cloud Engineer": {
+    bg: "bg-green-500/20",
+    border: "border-green-400/50",
+    text: "text-green-300",
+    icon: "☁️",
+    glow: "shadow-green-500/30"
+  },
+  "Cybersecurity Engineer": {
+    bg: "bg-red-500/20",
+    border: "border-red-400/50",
+    text: "text-red-300",
+    icon: "🔒",
+    glow: "shadow-red-500/30"
+  }
+};
+
+// Utility Functions
+const getRoleConfig = (role: RoleType): RoleConfig => 
+  ROLE_CONFIG[role] || {
+    bg: "bg-gray-500/20",
+    border: "border-gray-400/50",
+    text: "text-gray-300",
+    icon: "⚡",
+    glow: "shadow-gray-500/30"
   };
 
-  const config = getRoleConfig(role);
+const getRoleBadgeClasses = (config: RoleConfig): string =>
+  `inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${config.bg} ${config.border} border ${config.text} shadow-lg ${config.glow} backdrop-blur-sm transition-all duration-300 hover:scale-105`;
 
+// Components
+const RoleBadge = ({ role }: { role: RoleType }) => {
+  const config = getRoleConfig(role);
+  
   return (
-    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${config.bg} ${config.border} border ${config.text} shadow-lg ${config.glow} backdrop-blur-sm transition-all duration-300 hover:scale-105`}>
+    <div className={getRoleBadgeClasses(config)}>
       <span className="mr-1.5">{config.icon}</span>
       {role}
     </div>
   );
 };
 
-const ProjectCard = ({ title, description, image, roles }: any) => {
+const RoleBadges = ({ roles }: { roles: RoleType[] }) => (
+  <div className="flex flex-wrap gap-2">
+    {roles.map((role, index) => (
+      <RoleBadge key={index} role={role} />
+    ))}
+  </div>
+);
+
+const ProjectCard = ({ title, description, image, roles }: Project) => {
   return (
     <div className="group bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl overflow-hidden w-full max-w-sm mx-auto transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-white/30">
       <div className="relative overflow-hidden">
@@ -64,10 +92,8 @@ const ProjectCard = ({ title, description, image, roles }: any) => {
         <h3 className="text-xl font-bold mb-3 text-white group-hover:hidden">{title}</h3>
         
         {/* Role Badges */}
-        <div className="mb-4 flex flex-wrap gap-2">
-          {roles.map((role: string, index: number) => (
-            <RoleBadge key={index} role={role} />
-          ))}
+        <div className="mb-4">
+          <RoleBadges roles={roles} />
         </div>
         
         <p className="text-gray-200 text-sm leading-relaxed line-clamp-3">{description}</p>
@@ -86,8 +112,11 @@ const ProjectCard = ({ title, description, image, roles }: any) => {
   );
 };
 
+// Role Management Utilities
+const getAllRoles = (): RoleType[] => Object.keys(ROLE_CONFIG) as RoleType[];
+
 const Carousel = () => {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Dira",
       description:
@@ -174,9 +203,9 @@ const Carousel = () => {
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <div className="flex items-center space-x-2 text-sm">
             <span className="text-gray-400">Roles:</span>
-            <RoleBadge role="Software Engineer" />
-            <RoleBadge role="DevOps/Cloud Engineer" />
-            <RoleBadge role="Cybersecurity Engineer" />
+            {getAllRoles().map((role) => (
+              <RoleBadge key={role} role={role} />
+            ))}
           </div>
         </div>
       </div>
