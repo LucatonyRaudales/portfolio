@@ -190,8 +190,8 @@ const Carousel = () => {
   ];
 
   return (
-    <div className="py-8">
-      <div className="text-center mb-12">
+    <div className="h-full flex flex-col justify-center">
+      <div className="text-center mb-8">
         <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
           My Latest Projects
         </h1>
@@ -200,7 +200,7 @@ const Carousel = () => {
         </p>
         
         {/* Role Legend */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-4 mb-6">
           <div className="flex items-center space-x-2 text-sm">
             <span className="text-gray-400">Roles:</span>
             {getAllRoles().map((role) => (
@@ -209,7 +209,7 @@ const Carousel = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 flex-1 overflow-y-auto">
         {projects.map((project, index) => (
           <ProjectCard
             key={index}

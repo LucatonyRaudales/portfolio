@@ -7,7 +7,7 @@ import ProjectsSection from "./components/Projects";
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-auto overflow-x-hidden scrollbar-hide">
+    <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-y-auto overflow-x-hidden scrollbar-hide">
       <First />
       <ProjectsSection />
       <DevOpsSection />
