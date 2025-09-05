@@ -4,7 +4,7 @@ import CertificationsSection from "./components/Certifications";
 import SkillsSection from "./components/Skills";
 import ExperienceSection from "./components/Experience";
 import AboutSection from "./components/About";
-import Navigation from "./components/Navigation";
+// import Navigation from "./components/Navigation";
 
 export default function Home() {
   const sections = [
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="snap-y snap-mandatory bg-gradient-to-br from-black to-gray-900 h-screen w-screen overflow-y-auto overflow-x-hidden scrollbar-hide scroll-smooth">
-      <Navigation sections={sections} />
+      {/* <Navigation sections={sections} /> */}
       <First />
       <ProjectsSection />
       <CertificationsSection />

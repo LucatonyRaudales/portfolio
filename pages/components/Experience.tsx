@@ -19,72 +19,144 @@ interface Experience {
 // Data
 const experiences: Experience[] = [
   {
-    id: 'senior-devops-engineer',
-    title: 'Senior DevOps Engineer',
-    company: 'TechCorp Solutions',
+    id: 'security-analyst',
+    title: 'Security Analyst',
+    company: 'Remote',
     location: 'Remote',
-    period: '2022 - Present',
+    period: 'Jan 2025 - Present',
     type: 'full-time',
-    description: 'Leading cloud infrastructure and CI/CD pipeline development for enterprise applications.',
+    description: 'Specialized in cyber defense and red team techniques and tools, focusing on detection, response, and controlled exploitation of vulnerabilities.',
     achievements: [
-      'Reduced deployment time by 70% through automated CI/CD pipelines',
-      'Implemented Kubernetes clusters serving 10M+ daily requests',
-      'Led migration of legacy systems to cloud-native architecture',
-      'Established security best practices reducing vulnerabilities by 85%'
+      'Actively participated in bug bounty programs',
+      'Assessed security of web applications, APIs, and corporate systems',
+      'Applied OWASP and MITRE ATT&CK methodologies',
+      'Focused on detection, response, and controlled exploitation of vulnerabilities'
     ],
-    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Jenkins', 'Docker', 'Python', 'Go'],
-    icon: '☁️'
-  },
-  {
-    id: 'cybersecurity-specialist',
-    title: 'Cybersecurity Specialist',
-    company: 'SecureTech Inc',
-    location: 'San Francisco, CA',
-    period: '2021 - 2022',
-    type: 'full-time',
-    description: 'Conducted security assessments and implemented security measures for financial services.',
-    achievements: [
-      'Performed 50+ penetration tests identifying critical vulnerabilities',
-      'Developed security policies reducing incidents by 60%',
-      'Led incident response team during major security breach',
-      'Implemented zero-trust architecture for client networks'
-    ],
-    technologies: ['Python', 'Metasploit', 'Burp Suite', 'SIEM', 'Firewalls', 'IDS/IPS'],
+    technologies: ['OWASP', 'MITRE ATT&CK', 'Penetration Testing', 'Bug Bounty', 'Security Assessment', 'Red Team Tools'],
     icon: '🔒'
   },
   {
-    id: 'full-stack-developer',
-    title: 'Full-Stack Developer',
-    company: 'InnovateLab',
-    location: 'New York, NY',
-    period: '2020 - 2021',
+    id: 'backend-lead-teravision',
+    title: 'Backend Lead',
+    company: 'Teravision Technologies',
+    location: 'Remote',
+    period: 'Jan 2024 - July 2025',
     type: 'full-time',
-    description: 'Developed web applications and mobile solutions for startup clients.',
+    description: 'Led backend development team, modernized MongoDB architecture, and improved system performance for 200+ daily users.',
     achievements: [
-      'Built scalable web applications serving 100K+ users',
-      'Developed mobile apps with React Native',
-      'Implemented real-time features using WebSockets',
-      'Optimized application performance reducing load times by 50%'
+      'Modernized MongoDB schema architecture, reducing query retrieval times by 45%',
+      'Led 15+ peer-reviews per week and coached 6 engineers',
+      'Cut critical defects by 40% and slashed P95 latency by 27%',
+      'Improved backend performance by 27% and overall code quality'
     ],
-    technologies: ['React', 'Node.js', 'MongoDB', 'React Native', 'TypeScript', 'AWS'],
-    icon: '💻'
+    technologies: ['MongoDB', 'Node.js', 'Backend Architecture', 'Performance Optimization', 'Code Review', 'Team Leadership'],
+    icon: '⚙️'
   },
   {
-    id: 'software-engineer-intern',
-    title: 'Software Engineer Intern',
-    company: 'StartupXYZ',
-    location: 'Austin, TX',
-    period: '2019 - 2020',
-    type: 'internship',
-    description: 'Contributed to development of fintech platform and learned industry best practices.',
+    id: 'blockchain-engineer-multipaga',
+    title: 'Blockchain Engineer',
+    company: 'Multipaga',
+    location: 'Remote',
+    period: 'Jun 2024 - Jan 2025',
+    type: 'contract',
+    description: 'Designed and built blockchain-powered remittance platform using Rust and Cosmos SDK for fast, low-cost international transfers.',
     achievements: [
-      'Developed payment processing modules',
-      'Participated in agile development processes',
-      'Contributed to code reviews and testing',
-      'Learned modern development tools and practices'
+      'Built blockchain-powered remittance platform using Rust and Cosmos SDK',
+      'Engineered Solana smart contracts reducing transaction costs by 28%',
+      'Enabled real-time settlements for cross-border payments',
+      'Passed two security audits with zero critical findings',
+      'Integrated decentralized infrastructure with traditional banking systems'
     ],
-    technologies: ['JavaScript', 'React', 'Express.js', 'PostgreSQL', 'Git'],
+    technologies: ['Rust', 'Cosmos SDK', 'Solana', 'Blockchain', 'Smart Contracts', 'Web3', 'Cross-border Payments'],
+    icon: '⛓️'
+  },
+  {
+    id: 'founder-hindra',
+    title: 'Founder & Developer',
+    company: 'Hindra',
+    location: 'Honduras',
+    period: 'Sep 2022 - Present',
+    type: 'freelance',
+    description: 'Founded tech solutions company, partnered with startups to develop backend-heavy products and re-architect cloud infrastructure.',
+    achievements: [
+      'Partnered with 3+ startups to develop backend-heavy products',
+      'Architected production-grade microservice system using Golang, PostgreSQL, and gRPC',
+      'Improved API response times by 15% through microservice architecture',
+      'Designed multi-environment IaC setups via Terraform, cutting manual ops by 15 hours/week',
+      'Delivered scalable Flutter app with real-time sync and in-app payments',
+      'Engineered resilient GraphQL client-server architecture with advanced security controls'
+    ],
+    technologies: ['Golang', 'PostgreSQL', 'gRPC', 'Terraform', 'Flutter', 'GraphQL', 'AWS', 'Docker', 'Microservices'],
     icon: '🚀'
+  },
+  {
+    id: 'devops-engineer-scrummers',
+    title: 'DevOps Engineer',
+    company: 'Scrummers',
+    location: 'Remote',
+    period: 'May 2021 - Apr 2023',
+    type: 'full-time',
+    description: 'Engineered and deployed multi-cloud infrastructure across AWS and GCP using Terraform, Docker, and Kubernetes.',
+    achievements: [
+      'Deployed multi-cloud infrastructure across AWS and GCP',
+      'Reduced infrastructure costs by 40% and deployment times by 25%',
+      'Configured Prometheus/Grafana monitoring systems',
+      'Set up PostgreSQL/MySQL clusters for high availability',
+      'Automated CI/CD pipelines and infrastructure management'
+    ],
+    technologies: ['AWS', 'GCP', 'Terraform', 'Docker', 'Kubernetes', 'Prometheus', 'Grafana', 'PostgreSQL', 'MySQL'],
+    icon: '☁️'
+  },
+  {
+    id: 'flutter-developer-alquila',
+    title: 'Flutter Developer',
+    company: 'Alquila Tu Cancha',
+    location: 'Argentina (Remote)',
+    period: 'Nov 2020 - May 2021',
+    type: 'contract',
+    description: 'Maintained and implemented new features in a cross-platform mobile app using Flutter and Firebase.',
+    achievements: [
+      'Maintained cross-platform mobile application',
+      'Implemented new features and functionality',
+      'Integrated Firebase services for backend functionality',
+      'Ensured app stability and performance across platforms'
+    ],
+    technologies: ['Flutter', 'Firebase', 'Mobile Development', 'Cross-platform', 'Dart'],
+    icon: '📱'
+  },
+  {
+    id: 'technical-leader-hani',
+    title: 'Technical Leader',
+    company: 'Hani Market',
+    location: 'Honduras',
+    period: 'Apr 2020 - Nov 2020',
+    type: 'full-time',
+    description: 'Led a team of 8 developers to deliver a full-stack e-commerce platform using modern web technologies.',
+    achievements: [
+      'Led team of 8 developers in full-stack e-commerce platform development',
+      'Delivered complete e-commerce solution from frontend to backend',
+      'Implemented modern web technologies and best practices',
+      'Managed project timeline and technical deliverables'
+    ],
+    technologies: ['React.js', 'Node.js', 'TailwindCSS', 'MongoDB', 'AWS', 'Team Leadership'],
+    icon: '🛒'
+  },
+  {
+    id: 'software-engineer-iqneting',
+    title: 'Software Engineer',
+    company: 'IQneting',
+    location: 'Mexico (Remote)',
+    period: 'Sep 2019 - Apr 2020',
+    type: 'contract',
+    description: 'Collaborated directly with Mexico-based clients to define requirements and deliver software solutions.',
+    achievements: [
+      'Collaborated with Mexico-based clients on software projects',
+      'Defined technical requirements and specifications',
+      'Delivered custom software solutions',
+      'Maintained client relationships and project communication'
+    ],
+    technologies: ['Software Development', 'Client Relations', 'Requirements Analysis', 'Custom Solutions'],
+    icon: '💻'
   }
 ];
 
@@ -260,7 +332,6 @@ const ExperienceDetailModal = ({ experience, isOpen, onClose }: { experience: Ex
           <ul className="space-y-3">
             {experience.achievements.map((achievement, index) => (
               <li key={index} className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-gray-300 leading-relaxed">{achievement}</p>
               </li>
             ))}
