@@ -17,66 +17,67 @@ interface Company {
 const companies: Company[] = [
   {
     id: 1,
-    name: "First Startup",
+    name: "Hani Market",
     type: 'startup',
-    description: "My first entrepreneurial venture where I learned the fundamentals of building and scaling a technology company from the ground up.",
-    services: ["Product Development", "Market Research", "Team Building", "Business Strategy"],
-    icon: "🚀",
-    year: "2018-2020",
-    status: "Acquired",
+    description: "A food delivery app similar to Uber Eats that I co-founded and served as CTO. We built and launched the platform in just 4 months, achieving significant user growth before I sold my participation in the company.",
+    services: ["Food Delivery Platform", "Mobile App Development", "Backend Infrastructure", "User Acquisition", "Payment Integration"],
+    icon: "🍔",
+    year: "2020-2021",
+    status: "Sold",
     achievements: [
-      "Successfully launched MVP in 6 months",
-      "Built team of 8 developers",
-      "Achieved 10K+ active users",
-      "Successfully acquired by larger company"
+      "Co-founded and served as CTO",
+      "Launched MVP in just 4 months",
+      "Achieved 5,000+ active users",
+      "Successfully sold my participation in the company"
     ],
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker"]
+    technologies: ["Flutter", "Node.js", "MongoDB", "TypeScript", "AWS", "Docker"]
   },
   {
     id: 2,
-    name: "Second Startup",
+    name: "Hindra Pay",
     type: 'startup',
-    description: "A more focused venture where I applied lessons learned from my first startup to create a specialized solution for the market.",
-    services: ["SaaS Development", "Customer Acquisition", "Revenue Optimization", "Partnership Development"],
-    icon: "💡",
-    year: "2020-2022",
-    status: "Sold",
+    description: "A mobile app for cryptocurrency payments, allowing users to pay, buy, send and receive money in various cryptocurrencies. Built with a robust microservices architecture and advanced blockchain integration.",
+    services: ["Cryptocurrency Payments", "Mobile App Development", "Blockchain Integration", "Microservices Architecture", "Financial Services"],
+    icon: "💰",
+    year: "2021-2023",
+    status: "Stand By",
     achievements: [
-      "Developed innovative SaaS platform",
-      "Generated $500K+ ARR",
-      "Built strategic partnerships",
-      "Successfully sold to industry leader"
+      "Developed comprehensive crypto payment platform",
+      "Built microservices architecture with Go and Rust",
+      "Integrated with Coinbase for crypto transactions",
+      "Project currently on stand by due to 2023 break"
     ],
-    technologies: ["Vue.js", "Python", "PostgreSQL", "Kubernetes", "Terraform"]
+    technologies: ["Go", "Microservices", "gRPC", "Rust", "Coinbase", "Flutter", "Next.js", "Kafka", "AWS", "Docker", "Cloudflare"]
   },
   {
     id: 3,
-    name: "Cybersecurity Solutions Co.",
+    name: "Hindra",
     type: 'current',
-    description: "My current cybersecurity company providing comprehensive security services for mid and small companies. We offer everything they need to protect their digital assets and maintain compliance.",
+    description: "A comprehensive tech solutions company for mid and small businesses. Originally started as a software factory, we've evolved to provide cybersecurity, DevOps, automation, audits, software development, and other essential tech services that companies need to thrive in the digital age.",
     services: [
+      "Cybersecurity Solutions",
+      "DevOps & Automation",
+      "Infrastructure Monitoring",
       "Security Audits & Assessments",
+      "Software Development",
+      "Compliance Management",
+      "Cloud Infrastructure",
       "Penetration Testing",
-      "Compliance Management (SOC2, ISO27001, GDPR)",
-      "Incident Response & Forensics",
-      "Security Training & Awareness",
-      "Managed Security Services",
-      "Cloud Security Implementation",
-      "Network Security Monitoring",
-      "Vulnerability Management",
-      "Security Policy Development"
+      "Incident Response",
+      "Security Training",
+      "Managed IT Services"
     ],
-    icon: "🔒",
+    icon: "🛡️",
     year: "2022-Present",
     status: "Active",
     achievements: [
-      "Protected 50+ companies from cyber threats",
-      "Achieved 99.9% client satisfaction rate",
-      "Prevented $2M+ in potential security breaches",
-      "Built team of 15+ security experts",
-      "Expanded to 3 major cities"
+      "Starting with cybersecurity roles and expanding services",
+      "Providing comprehensive infrastructure monitoring",
+      "Building expertise in security and DevOps solutions",
+      "Supporting mid and small businesses with tech needs",
+      "Growing team of specialized tech professionals"
     ],
-    technologies: ["SIEM", "EDR/XDR", "NGFW", "WAF", "Cloud Security", "Compliance Tools", "Forensic Tools"]
+    technologies: ["SIEM", "EDR/XDR", "NGFW", "WAF", "Cloud Security", "Compliance Tools", "Forensic Tools", "DevOps Tools", "Automation Scripts", "Monitoring Tools", "Infrastructure Monitoring"]
   }
 ];
 
@@ -111,6 +112,7 @@ const AboutSection: React.FC = () => {
       case 'Active': return 'text-green-400 bg-green-400/20 border-green-400/30';
       case 'Acquired': return 'text-blue-400 bg-blue-400/20 border-blue-400/30';
       case 'Sold': return 'text-purple-400 bg-purple-400/20 border-purple-400/30';
+      case 'Stand By': return 'text-yellow-400 bg-yellow-400/20 border-yellow-400/30';
       default: return 'text-gray-400 bg-gray-400/20 border-gray-400/30';
     }
   };
