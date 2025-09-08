@@ -2,7 +2,8 @@ import { LuMouse } from "react-icons/lu";
 import Typewriter from "typewriter-effect";
 import { FaHandSpock, FaCode, FaShieldAlt, FaRocket } from "react-icons/fa";
 import Image from "next/image";
-import { GrLinkedin, GrTwitter } from "react-icons/gr";
+import { GrLinkedin, GrTwitter, GrGithub } from "react-icons/gr";
+import { FaDev } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
@@ -96,6 +97,22 @@ const First = () => {
           >
             <GrLinkedin color="white" size={28} className="group-hover:text-blue-300 transition-colors duration-300" />
             <div className="absolute -top-2 -right-2 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+          </button>
+
+          <button
+            onClick={() => window.open("https://dev.to/lucatonyraudales", "_blank", "noopener,noreferrer")}
+            className="group relative p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 hover:scale-110 hover:bg-green-500/20 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/25"
+          >
+            <FaDev color="white" size={28} className="group-hover:text-green-300 transition-colors duration-300" />
+            <div className="absolute -top-2 -right-2 w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+          </button>
+
+          <button
+            onClick={() => window.open("https://github.com/LucatonyRaudales", "_blank", "noopener,noreferrer")}
+            className="group relative p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 hover:scale-110 hover:bg-gray-500/20 hover:border-gray-400/50 hover:shadow-lg hover:shadow-gray-500/25"
+          >
+            <GrGithub color="white" size={28} className="group-hover:text-gray-300 transition-colors duration-300" />
+            <div className="absolute -top-2 -right-2 w-3 h-3 bg-gray-400 rounded-full animate-pulse"></div>
           </button>
 
           <button
