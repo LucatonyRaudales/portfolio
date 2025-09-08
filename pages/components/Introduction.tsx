@@ -127,14 +127,7 @@ const First = () => {
         {/* Resume Download Button */}
         <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <button
-            onClick={() => {
-              const link = document.createElement('a');
-              link.href = '/resume/Resume - Tony Raudales.pdf';
-              link.download = 'Tony_Raudales_Resume.pdf';
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-            }}
+            onClick={() => window.open("https://drive.google.com/file/d/1yTiUnLcVbO8OU9XHoGkZAh4o35dMShH9/view?usp=drive_link", "_blank", "noopener,noreferrer")}
             className="group relative bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 border border-purple-400/30 hover:border-purple-300/50"
           >
             <span className="flex items-center space-x-2">
