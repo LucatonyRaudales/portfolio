@@ -187,35 +187,35 @@ const CategoryCard = ({ category, onClick }: { category: SkillCategory; onClick:
   return (
     <div 
       onClick={() => onClick(category)}
-      className={`${config.bg} ${config.border} border rounded-xl p-3 sm:p-6 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl ${config.glow} cursor-pointer group`}
+      className={`${config.bg} ${config.border} border rounded-lg p-2 sm:p-4 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-xl ${config.glow} cursor-pointer group`}
     >
       <div className="text-center">
-        <div className="flex justify-center mb-2 sm:mb-4">
-          <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${config.gradient} flex items-center justify-center text-lg sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+        <div className="flex justify-center mb-1 sm:mb-2">
+          <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r ${config.gradient} flex items-center justify-center text-sm sm:text-lg shadow-lg group-hover:scale-110 transition-transform duration-300`}>
             {category.icon}
           </div>
         </div>
         
-        <h2 className={`text-lg sm:text-xl font-bold ${config.text} mb-1 sm:mb-2 group-hover:text-white transition-colors duration-300`}>
+        <h2 className={`text-sm sm:text-base font-bold ${config.text} mb-1 group-hover:text-white transition-colors duration-300`}>
           {category.name}
         </h2>
         
         {/* Desktop only content */}
         <div className="hidden sm:block">
-          <p className="text-gray-400 text-sm mb-4 line-clamp-2">{category.description}</p>
+          <p className="text-gray-400 text-xs mb-2 line-clamp-2">{category.description}</p>
           
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <span className="text-white text-sm font-medium">{category.skills.length} Skills</span>
+          <div className="flex items-center justify-center space-x-1 mb-2">
+            <span className="text-white text-xs font-medium">{category.skills.length} Skills</span>
             <div className="w-1 h-1 bg-white/40 rounded-full"></div>
-            <span className="text-white text-sm font-medium">
+            <span className="text-white text-xs font-medium">
               {Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length)}% Avg
             </span>
           </div>
 
           {/* Click to view indicator */}
-          <div className="flex items-center justify-center space-x-2 text-blue-300 opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <span className="text-sm font-medium">Click to view all skills</span>
-            <span className="text-lg">→</span>
+          <div className="flex items-center justify-center space-x-1 text-blue-300 opacity-0 group-hover:opacity-100 transition-all duration-300">
+            <span className="text-xs font-medium">Click to view</span>
+            <span className="text-sm">→</span>
           </div>
         </div>
       </div>
@@ -338,9 +338,6 @@ const SkillCategoryModal = ({ category, isOpen, onClose, onSkillClick }: { categ
           <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             View Related Projects
           </button>
-          <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
-            Download Resume
-          </button>
         </div>
       </div>
     </AnimatedModal>
@@ -410,9 +407,6 @@ const SkillDetailModal = ({ skill, isOpen, onClose }: { skill: Skill | null; isO
           <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             View Projects
           </button>
-          <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
-            Learn More
-          </button>
         </div>
       </div>
     </AnimatedModal>
@@ -443,18 +437,18 @@ const SkillsSection = () => {
         </div>
       </div>
       {/* Header Section */}
-      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-8 pb-4">
-        <h1 className="text-4xl font-bold text-white mb-4">
+      <div className="text-center relative z-20 w-full flex flex-col justify-center items-center pt-6 pb-2">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2">
           Technical Skills
         </h1>
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-6">
+        <p className="text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto mb-4">
           Click on any category to explore all skills in detail
         </p>
       </div>
       
       {/* Content Section */}
-      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16 w-full max-w-6xl px-6">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-6 w-full">
+      <div className="flex-1 flex flex-col items-center justify-center relative z-20 pb-16 w-full max-w-4xl px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4 w-full">
           {skillsData.map((category, index) => (
             <CategoryCard 
               key={index} 

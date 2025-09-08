@@ -19,6 +19,7 @@ interface Project {
   description: string;
   image: string;
   roles: RoleType[];
+  websiteUrl?: string;
 }
 
 // Role Configuration
@@ -282,15 +283,18 @@ const ProjectDetailModal = ({ project, isOpen, onClose }: { project: Project | n
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex justify-center space-x-4 pt-6">
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-              View Live Demo
-            </button>
-            <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
-              View Source Code
-            </button>
-          </div>
+          {/* Website Button - Only show if project has a website URL */}
+          {project.websiteUrl && (
+            <div className="flex justify-center pt-6">
+              <button 
+                onClick={() => window.open(project.websiteUrl, '_blank', 'noopener,noreferrer')}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                🌐 Go to Website
+              </button>
+            </div>
+          )}
+
         </div>
       </div>
     </AnimatedModal>
@@ -318,30 +322,34 @@ const Carousel = () => {
     {
       title: "Dira",
       description:
-        "It is a suite of products for implementing cryptocurrency payments in businesses, automating contracts with Blockchain, and asset tokenization for any company.",
+        "A comprehensive payment application that supported cryptocurrencies, USD, and Colombian Pesos (COP). The platform also functioned as a cryptocurrency exchange, allowing users to trade between different digital assets and traditional currencies seamlessly.",
       image: "/dira.png",
-      roles: ["Software Engineer", "DevOps/Cloud Engineer", "Cybersecurity Engineer"]
+      roles: ["Software Engineer", "DevOps/Cloud Engineer", "Cybersecurity Engineer"],
+      websiteUrl: "https://dira.finance"
     },
     {
       title: "Digito",
       description:
         "It is an innovative document management solution that will help you reduce process times in your company by up to 80%, through the unique combination of technologies such as automation, electronic signatures, and Blockchain.",
       image: "/digito.jpeg",
-      roles: ["Software Engineer", "Cybersecurity Engineer"]
+      roles: ["Software Engineer", "Cybersecurity Engineer"],
+      websiteUrl: "https://digito.co"
     },
     {
       title: "Chivo Wallet",
       description:
         "It is an electronic wallet created by the Government of El Salvador for making payments in dollars or Bitcoin.",
       image: "/chivo.png",
-      roles: ["Software Engineer", "DevOps/Cloud Engineer"]
+      roles: ["Software Engineer", "DevOps/Cloud Engineer"],
+      websiteUrl: "https://chivowallet.com"
     },
     {
       title: "Ruru Wallet",
       description:
         "Ruru wallet is an element of the Ruru ecosystem designed to create total crypto implementation whether you're an institution, individual or government.",
       image: "/athena.png",
-      roles: ["Software Engineer", "DevOps/Cloud Engineer", "Cybersecurity Engineer"]
+      roles: ["DevOps/Cloud Engineer", "Cybersecurity Engineer"],
+      websiteUrl: "https://athenabitcoin.com"
     },
     {
       title: "Vai",
@@ -362,28 +370,24 @@ const Carousel = () => {
       description:
         "Platform where creators and participants come together to earn money by creating and buying tickets, randomly selecting the winning ticket.",
       image: "/lotmoney.png",
-      roles: ["Software Engineer"]
-    },
-    {
-      title: "De la villa",
-      description:
-        "An online service that allows users to make purchases of food products and other essential consumer items from the comfort of their homes.",
-      image: "/delavilla.png",
-      roles: ["Software Engineer", "DevOps/Cloud Engineer"]
+      roles: ["Software Engineer"],
+      websiteUrl: "https://lotmoney.money"
     },
     {
       title: "Alquila tu Cancha",
       description:
         "Book a court without making a phone call! Choose a day and time online to see the available slots in your city.",
       image: "/alquilatucancha.png",
-      roles: ["Software Engineer"]
+      roles: ["Software Engineer"],
+      websiteUrl: "https://atcsports.io"
     },
     {
       title: "Interrapidisimo",
       description:
         "As a DevOps engineer, I have developed and implemented the CI/CD pipelines for the databases of this logistics company, using Azure DevOps.",
       image: "/interrapidisimo.png",
-      roles: ["DevOps/Cloud Engineer"]
+      roles: ["DevOps/Cloud Engineer"],
+      websiteUrl: "https://interrapidisimo.com"
     },
   ];
 
