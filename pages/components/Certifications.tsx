@@ -20,12 +20,13 @@ interface Study {
   title: string;
   institution: string;
   date: string;
-  type: 'degree' | 'course' | 'bootcamp';
+  type: 'degree' | 'course' | 'bootcamp' | 'masters';
   image: string;
   description: string;
   skills: string[];
   icon: string;
   duration: string;
+  url?: string;
 }
 
 // Data
@@ -79,28 +80,30 @@ const certifications: Certification[] = [
 
 const studies: Study[] = [
   {
-    id: 'computer-science',
+    id: 'computer-science-unicah',
     title: 'Bachelor of Computer Science',
-    institution: 'University of Technology',
-    date: '2018-2022',
+    institution: 'Universidad Católica de Honduras (UNICAH)',
+    date: '2015-2019',
     type: 'degree',
-    image: '/university-logo.png',
-    description: 'Comprehensive study of computer science fundamentals, algorithms, and software engineering.',
-    skills: ['Algorithms', 'Data Structures', 'Software Engineering', 'Database Systems', 'Operating Systems'],
+    image: '/unicah-logo.png',
+    description: 'Comprehensive computer science education with focus on software development, system architecture, and theoretical fundamentals. Program recognized by the Holy See that combines academic excellence with ethical and spiritual values.',
+    skills: ['Algorithms & Data Structures', 'Software Engineering', 'Database Systems', 'Operating Systems', 'Computer Networks', 'Artificial Intelligence', 'Object-Oriented Programming', 'Software Architecture', 'Applied Mathematics', 'Professional Ethics'],
     icon: '🎓',
-    duration: '4 years'
+    duration: '4 years',
+    url: 'https://www.unicah.edu/'
   },
   {
-    id: 'cybersecurity-bootcamp',
-    title: 'Cybersecurity Bootcamp',
-    institution: 'Tech Academy',
-    date: '2022',
-    type: 'bootcamp',
-    image: '/tech-academy-logo.png',
-    description: 'Intensive 6-month program covering ethical hacking, penetration testing, and security analysis.',
-    skills: ['Ethical Hacking', 'Penetration Testing', 'Network Security', 'Forensics', 'Incident Response'],
+    id: 'cybersecurity-masters-unitec',
+    title: 'Master of Cybersecurity',
+    institution: 'Universidad Tecnológica Centroamericana (UNITEC)',
+    date: '2024-Present',
+    type: 'masters',
+    image: '/unitec-logo.png',
+    description: 'Specialized postgraduate program in cybersecurity covering from information security fundamentals to advanced techniques for protecting critical infrastructures. Practical approach with cutting-edge methodologies and real case studies.',
+    skills: ['Vulnerability Assessment', 'Ethical Hacking', 'Incident Management', 'Advanced Cryptography', 'Cloud Security', 'Digital Forensics', 'Compliance & Auditing', 'Threat Intelligence', 'Red Team Operations', 'Blue Team Defense'],
     icon: '🔐',
-    duration: '6 months'
+    duration: 'In Progress',
+    url: 'https://www.unitec.edu/'
   }
 ];
 
@@ -159,6 +162,14 @@ const getTypeConfig = (type: string) => {
         text: 'text-yellow-300',
         icon: '🎓',
         glow: 'shadow-yellow-500/30'
+      };
+    case 'masters':
+      return {
+        bg: 'bg-purple-500/20',
+        border: 'border-purple-400/50',
+        text: 'text-purple-300',
+        icon: '🎓',
+        glow: 'shadow-purple-500/30'
       };
     case 'course':
       return {
@@ -413,9 +424,16 @@ const StudyDetailModal = ({ study, isOpen, onClose }: { study: Study | null; isO
           <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             View Certificate
           </button>
-          <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
-            Learn More
-          </button>
+          {study.url && (
+            <a 
+              href={study.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20"
+            >
+              Visit University
+            </a>
+          )}
         </div>
       </div>
     </AnimatedModal>

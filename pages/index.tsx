@@ -8,18 +8,6 @@ import AboutSection from "./components/About";
 // import Navigation from "./components/Navigation";
 
 export default function Home() {
-  const sections = [
-    'Introduction',
-    'Projects',
-    'Certifications',
-    'Skills',
-    'Experience',
-    'About',
-    'DevOps',
-    'Backend',
-    'Frontend'
-  ];
-
   return (
     <>
       <Head>
