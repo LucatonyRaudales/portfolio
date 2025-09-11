@@ -13,6 +13,7 @@ interface Certification {
   description: string;
   skills: string[];
   icon: string;
+  linkedinUrl?: string;
 }
 
 interface Study {
@@ -32,49 +33,236 @@ interface Study {
 // Data
 const certifications: Certification[] = [
   {
-    id: 'aws-saa',
-    title: 'AWS Solutions Architect Associate',
-    issuer: 'Amazon Web Services',
-    date: '2023',
-    credentialId: 'AWS-SAA-123456',
+    id: 'aws-solutions-architect-professional',
+    title: 'AWS Certified Solutions Architect - Professional',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'In Progress',
     image: '/aws-logo.png',
     category: 'cloud',
-    description: 'Demonstrates ability to design and deploy scalable systems on AWS.',
-    skills: ['AWS', 'Cloud Architecture', 'EC2', 'S3', 'RDS', 'Lambda'],
-    icon: '☁️'
+    description: 'Advanced AWS certification demonstrating expertise in designing distributed systems on AWS. Currently in progress.',
+    skills: ['AWS', 'Cloud Architecture', 'Distributed Systems', 'Advanced Solutions', 'Enterprise Architecture'],
+    icon: '☁️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
   },
   {
-    id: 'azure-fundamentals',
-    title: 'Microsoft Azure Fundamentals',
-    issuer: 'Microsoft',
-    date: '2023',
-    image: '/azure-logo.png',
+    id: 'comprehensive-aws-cloud-operations',
+    title: 'Comprehensive AWS Cloud Operations and Security Foundations',
+    issuer: 'Unitec for life',
+    date: 'Aug 2025',
+    credentialId: 'DF9BEEDCA002',
+    image: '/unitec-logo.png',
     category: 'cloud',
-    description: 'Foundational knowledge of cloud services and Azure platform.',
-    skills: ['Azure', 'Cloud Computing', 'Virtual Machines', 'Storage'],
-    icon: '☁️'
+    description: 'Comprehensive certification covering AWS cloud operations, security foundations, and best practices for cloud infrastructure management.',
+    skills: ['Amazon Web Services (AWS)', 'Cloud Operations', 'Security Foundations', 'Infrastructure Management'],
+    icon: '☁️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
   },
   {
-    id: 'cissp',
-    title: 'Certified Information Systems Security Professional',
-    issuer: 'ISC²',
-    date: '2022',
-    image: '/cissp-logo.png',
+    id: 'cybersecurity-tech-professionals',
+    title: 'Cybersecurity for Tech Professionals',
+    issuer: 'Campus BBVA',
+    date: 'Aug 2025',
+    credentialId: 'IRCYTNWPF7E8',
+    image: '/bbva-logo.png',
     category: 'security',
-    description: 'Advanced certification in information security management.',
-    skills: ['Security Management', 'Risk Assessment', 'Security Architecture', 'Incident Response'],
-    icon: '🔒'
+    description: 'Specialized cybersecurity training for technology professionals covering modern security threats and defense strategies.',
+    skills: ['Cybersecurity', 'Threat Analysis', 'Security Protocols', 'Risk Management'],
+    icon: '🔒',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
   },
   {
-    id: 'ckad',
-    title: 'Certified Kubernetes Application Developer',
-    issuer: 'Cloud Native Computing Foundation',
-    date: '2023',
-    image: '/kubernetes-logo.png',
+    id: 'data-cybersecurity',
+    title: 'Data & Cybersecurity',
+    issuer: 'Campus BBVA',
+    date: 'Aug 2025',
+    credentialId: 'B8N703PSQ74E',
+    image: '/bbva-logo.png',
+    category: 'security',
+    description: 'Comprehensive program covering data protection, cybersecurity principles, and secure data handling practices.',
+    skills: ['Data Protection', 'Cybersecurity', 'Secure Data Handling', 'Privacy Compliance'],
+    icon: '🔒',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'aws-knowledge-architecting',
+    title: 'AWS Knowledge: Architecting',
+    issuer: 'Amazon Web Services (AWS)',
+    date: 'May 2025',
+    image: '/aws-logo.png',
+    category: 'cloud',
+    description: 'AWS architectural knowledge certification covering cloud architecture patterns, best practices, and design principles.',
+    skills: ['Amazon Web Services (AWS)', 'Cloud Architecture', 'System Design', 'Scalability'],
+    icon: '☁️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'siem-101',
+    title: 'SIEM 101',
+    issuer: 'LetsDefend',
+    date: 'Nov 2024',
+    credentialId: '1d952479d28942cf865729a6109d6a61',
+    image: '/letsdefend-logo.png',
+    category: 'security',
+    description: 'Fundamental Security Information and Event Management (SIEM) training covering log analysis and security monitoring.',
+    skills: ['SIEM', 'Log Analysis', 'Security Monitoring', 'Incident Detection'],
+    icon: '🔒',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'splunk-engineer',
+    title: 'Splunk Engineer',
+    issuer: 'LetsDefend',
+    date: 'Nov 2024',
+    credentialId: '59d242b617604801b379b97150001e71',
+    image: '/letsdefend-logo.png',
     category: 'devops',
-    description: 'Proficiency in designing, building, and deploying applications on Kubernetes.',
-    skills: ['Kubernetes', 'Container Orchestration', 'Docker', 'Microservices'],
-    icon: '⚙️'
+    description: 'Splunk engineering certification covering data analysis, monitoring, and security operations using Splunk platform.',
+    skills: ['Splunk', 'Data Analysis', 'Security Operations', 'Monitoring'],
+    icon: '⚙️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'golang-test',
+    title: 'Golang Test',
+    issuer: 'TestDome',
+    date: 'Aug 2023',
+    credentialId: '935b2abadf4c412490bbdd070a202a8d',
+    image: '/testdome-logo.png',
+    category: 'development',
+    description: 'Golang programming assessment demonstrating proficiency in Go language fundamentals and critical thinking skills.',
+    skills: ['Golang', 'Critical Thinking', 'Programming', 'Problem Solving'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'desarrollo-golang',
+    title: 'Desarrollo Con Golang',
+    issuer: 'Udemy',
+    date: 'Jul 2023',
+    credentialId: 'UC-744c9185-d4e8-409c-88cb-c8d7c6f45c01',
+    image: '/udemy-logo.png',
+    category: 'development',
+    description: 'Comprehensive Go programming course covering language fundamentals, best practices, and practical development skills.',
+    skills: ['Golang', 'Backend Development', 'Programming', 'Software Development'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'lifelong-learning',
+    title: 'Lifelong Learning',
+    issuer: 'CertiProf',
+    date: 'Jul 2022',
+    credentialId: '394ee812-4ff8-4bd5-901d-871f602198ae',
+    image: '/certiprof-logo.png',
+    category: 'development',
+    description: 'Certification recognizing commitment to continuous learning and professional development in technology.',
+    skills: ['Continuous Learning', 'Professional Development', 'Adaptability', 'Growth Mindset'],
+    icon: '📚',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'scrum-foundation',
+    title: 'Scrum Foundation Professional Certificate - SFPC™',
+    issuer: 'CertiProf',
+    date: 'Jul 2022',
+    credentialId: '47559a9f-4494-4fd2-8f4c-4ec6d1d4b6fd',
+    image: '/certiprof-logo.png',
+    category: 'development',
+    description: 'Scrum Foundation Professional Certificate demonstrating knowledge of Scrum framework and agile methodologies.',
+    skills: ['Scrum', 'Agile Methodologies', 'Project Management', 'Team Collaboration'],
+    icon: '📚',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'kubernetes-course',
+    title: 'Curso de Kubernetes',
+    issuer: 'Platzi',
+    date: 'Apr 2022',
+    credentialId: '8006eeb5-31a9-41a2-b4ee-c79b844e716d',
+    image: '/platzi-logo.png',
+    category: 'devops',
+    description: 'Kubernetes course covering container orchestration, cluster management, and cloud-native application deployment.',
+    skills: ['Kubernetes', 'Container Orchestration', 'DevOps', 'Cloud Native'],
+    icon: '⚙️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'django-backend-api',
+    title: 'Build a Backend REST API with Python & Django - Beginner',
+    issuer: 'Udemy',
+    date: 'Mar 2022',
+    credentialId: 'UC-22ccec63-9edb-4179-9f34-8252431e64f7',
+    image: '/udemy-logo.png',
+    category: 'development',
+    description: 'Beginner course on building REST APIs with Python and Django framework for backend development.',
+    skills: ['Python', 'Django', 'REST API', 'Backend Development'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'aws-cloud-computing',
+    title: 'Curso Práctico de Cloud Computing con AWS',
+    issuer: 'Platzi',
+    date: 'Mar 2022',
+    credentialId: '7296e909-a719-43de-99a3-5870f46a9d04',
+    image: '/platzi-logo.png',
+    category: 'cloud',
+    description: 'Practical AWS cloud computing course covering fundamental cloud services and hands-on implementation.',
+    skills: ['AWS', 'Cloud Computing', 'Infrastructure', 'Cloud Services'],
+    icon: '☁️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'soft-skills-development',
+    title: 'Curso de Desarrollo de Habilidades Blandas para Equipos de Trabajo',
+    issuer: 'Platzi',
+    date: 'Mar 2022',
+    credentialId: 'c5d4ef0e-41ce-4c4a-adf1-20b8129a1661',
+    image: '/platzi-logo.png',
+    category: 'development',
+    description: 'Soft skills development course for work teams focusing on communication, collaboration, and professional growth.',
+    skills: ['Soft Skills', 'Team Collaboration', 'Communication', 'Professional Development'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'terraform-infrastructure',
+    title: 'Curso de Infraestructura Como Código con Terraform',
+    issuer: 'Platzi',
+    date: 'Mar 2022',
+    credentialId: '2eb29727-ad3f-47c5-8c27-1bfb80a2c2ca',
+    image: '/platzi-logo.png',
+    category: 'devops',
+    description: 'Infrastructure as Code course using Terraform for automated infrastructure provisioning and management.',
+    skills: ['Terraform', 'Infrastructure as Code', 'DevOps', 'Automation'],
+    icon: '⚙️',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'software-architecture-fundamentals',
+    title: 'Fundamentos de Arquitectura de Software',
+    issuer: 'Platzi',
+    date: 'Mar 2022',
+    credentialId: '15c66ec3-022d-49d8-8877-1364fc70c9f3',
+    image: '/platzi-logo.png',
+    category: 'development',
+    description: 'Software architecture fundamentals course covering design patterns, system design, and architectural principles.',
+    skills: ['Software Architecture', 'Design Patterns', 'System Design', 'Best Practices'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
+  },
+  {
+    id: 'blockchain-professional',
+    title: 'Blockchain Professional Certificate',
+    issuer: 'CertiProf',
+    date: 'Feb 2022',
+    credentialId: '65ff539f-03f3-4aee-9de4-b82e3bc4d035',
+    image: '/certiprof-logo.png',
+    category: 'development',
+    description: 'Blockchain professional certificate covering distributed ledger technology, smart contracts, and cryptocurrency fundamentals.',
+    skills: ['Blockchain', 'Distributed Ledger', 'Smart Contracts', 'Cryptocurrency'],
+    icon: '💻',
+    linkedinUrl: 'https://www.linkedin.com/in/tony-raudales'
   }
 ];
 
@@ -353,9 +541,20 @@ const CertificationDetailModal = ({ certification, isOpen, onClose }: { certific
 
         {/* Action Buttons */}
         <div className="flex justify-center space-x-4 pt-6">
-          <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-            View Certificate
-          </button>
+          {certification.linkedinUrl ? (
+            <a 
+              href={certification.linkedinUrl} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              View on LinkedIn
+            </a>
+          ) : (
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              View Certificate
+            </button>
+          )}
           <button className="bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 border border-white/20">
             Learn More
           </button>
@@ -523,7 +722,7 @@ const CertificationsSection = () => {
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
                 {activeTab === 'certifications' 
-                  ? 'I hold industry-recognized certifications in cloud computing, cybersecurity, and software development. These credentials validate my expertise and commitment to staying current with the latest technologies and best practices.'
+                  ? 'I hold industry-recognized certifications in cloud computing, cybersecurity, and software development. These credentials validate my expertise and commitment to staying current with the latest technologies and best practices. View my complete certification portfolio on LinkedIn.'
                   : 'My educational background includes specialized studies in computer science, cybersecurity, and cloud technologies. I continuously invest in learning to stay at the forefront of technological innovation.'
                 }
               </p>
@@ -566,12 +765,28 @@ const CertificationsSection = () => {
           /* Desktop: Show cards */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8 justify-items-center max-w-7xl">
             {activeTab === 'certifications' 
-              ? certifications.slice(0, INITIAL_ITEMS_COUNT).map((cert) => (
+              ? (certifications.length > 0 ? certifications.slice(0, INITIAL_ITEMS_COUNT).map((cert) => (
                   <CertificationCard 
                     key={cert.id} 
                     certification={cert} 
                     onClick={setSelectedCertification}
                   />
+                )) : (
+                  <div className="col-span-full text-center py-12">
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl max-w-md mx-auto">
+                      <div className="text-6xl mb-4">🏆</div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Professional Certifications</h3>
+                      <p className="text-gray-300 mb-6">View my complete certification portfolio on LinkedIn to see all my professional credentials and achievements.</p>
+                      <a 
+                        href="https://www.linkedin.com/in/tony-raudales" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block"
+                      >
+                        View on LinkedIn
+                      </a>
+                    </div>
+                  </div>
                 ))
               : studies.slice(0, INITIAL_ITEMS_COUNT).map((study) => (
                   <StudyCard 
@@ -593,6 +808,18 @@ const CertificationsSection = () => {
           >
             ✨ {isMobile ? `Explore All ${activeTab === 'certifications' ? certifications.length : studies.length} ${activeTab === 'certifications' ? 'Certifications' : 'Studies'}` : `Show All ${activeTab === 'certifications' ? 'Certifications' : 'Education'} (${activeTab === 'certifications' ? certifications.length : studies.length})`}
           </button>
+        )}
+        
+        {/* LinkedIn Button for Certifications when empty */}
+        {activeTab === 'certifications' && certifications.length === 0 && !isMobile && (
+          <a 
+            href="https://www.linkedin.com/in/tony-raudales" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-12 rounded-full transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl text-sm sm:text-lg relative z-10 border border-white/20 hover:border-white/40 backdrop-blur-sm mx-4"
+          >
+            🔗 View All Certifications on LinkedIn
+          </a>
         )}
       </div>
       
@@ -638,7 +865,7 @@ const CertificationsSection = () => {
           {/* All Items Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {activeTab === 'certifications' 
-              ? certifications.map((cert) => (
+              ? (certifications.length > 0 ? certifications.map((cert) => (
                   <CertificationCard 
                     key={cert.id} 
                     certification={cert} 
@@ -647,6 +874,22 @@ const CertificationsSection = () => {
                       setIsModalOpen(false);
                     }}
                   />
+                )) : (
+                  <div className="col-span-full text-center py-12">
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl max-w-md mx-auto">
+                      <div className="text-6xl mb-4">🏆</div>
+                      <h3 className="text-2xl font-bold text-white mb-4">Professional Certifications</h3>
+                      <p className="text-gray-300 mb-6">View my complete certification portfolio on LinkedIn to see all my professional credentials and achievements.</p>
+                      <a 
+                        href="https://www.linkedin.com/in/tony-raudales" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block"
+                      >
+                        View on LinkedIn
+                      </a>
+                    </div>
+                  </div>
                 ))
               : studies.map((study) => (
                   <StudyCard 
