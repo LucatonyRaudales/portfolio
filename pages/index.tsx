@@ -291,9 +291,6 @@ export default function Home() {
               Marketing.
               <br />
               <span className="serif">In sync.</span>
-              <span className="hero-asterisk" aria-hidden="true">
-                ✳
-              </span>
             </h1>
             <p className="hero-description">
               I’m Tony. I help businesses manage their technology and run

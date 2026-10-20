@@ -179,14 +179,6 @@ summary:focus-visible {
 .hero h1 .serif {
   color: var(--orange);
 }
-.hero-asterisk {
-  display: inline-block;
-  margin-left: 35px;
-  color: var(--orange);
-  font-size: 85px;
-  vertical-align: middle;
-  font-weight: 400;
-}
 .hero-description {
   font-size: 17px;
   line-height: 1.7;
@@ -807,10 +799,6 @@ summary:focus-visible {
     font-size: 75px;
     letter-spacing: -4.5px;
   }
-  .hero-asterisk {
-    font-size: 65px;
-    margin-left: 20px;
-  }
   .hero-actions {
     gap: 15px;
   }
@@ -920,10 +908,6 @@ summary:focus-visible {
     font-size: clamp(66px, 13vw, 92px);
     letter-spacing: -4px;
     line-height: 1.01;
-  }
-  .hero-asterisk {
-    font-size: 70px;
-    margin-left: 30px;
   }
   .hero-description {
     font-size: 16px;
