@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tony R. Raudales — consulting portfolio
 
-## Getting Started
+A responsive English-language portfolio for remote cloud, DevOps, web development, and security consulting. Built with the existing Next.js Pages Router, React, TypeScript, and Tailwind setup.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production check
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm run start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+`npm run build` checks TypeScript and the configured Next.js lint rules before generating the production site. The npm lockfile is synchronized with the existing package manifest.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Content and structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- `pages/index.tsx`: commercial copy, twelve project records, service descriptions, project filtering, accessible contribution disclosures, mobile navigation, and contact links.
+- `styles/globals.css`: responsive visual system, focus styles, and reduced-motion support. Uses system fonts with no third-party font requests.
+- `pages/_document.tsx`: document shell; page metadata belongs in the homepage Head.
+- `public/`: retained portrait and project assets.
+- `components/legacy/`: original portfolio components retained for reference, outside the public route directory.
 
-## Learn More
+Contact currently points to the existing LinkedIn profile. No new email address, booking service, backend form, analytics, or availability promise is invented. The résumé remains linked in the legacy introduction; the homepage is focused on consulting inquiries.
 
-To learn more about Next.js, take a look at the following resources:
+AWS certification and master's completion claims are omitted from the new homepage pending confirmation of their current status. Project contributions are based on the existing portfolio, without unverified outcome percentages or endorsements. Update these details only with accurate, publishable information.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Verification
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Check the homepage at desktop and mobile widths. Exercise all project filters, the show-all/show-fewer button, contribution disclosures, mobile menu open/close, and contact navigation. Confirm images load, internal anchors resolve, external links use the intended destination, and no horizontal overflow occurs.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project retains its Next.js/Vercel setup. Review the pull-request preview before merging into the production branch. A framework/dependency major-version migration is separate from this visual and content redesign.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Qash, Dubsado, and Valley Coffee were added at the owner’s request with confirmed roles: Qash (DevSecOps, SRE, cybersecurity), Dubsado (Backend Engineer, Tech Lead), and Valley Coffee (technology management, marketing, campaigns). Qash links to qash.ai, the corrected address provided by the owner.
