@@ -270,7 +270,8 @@ summary:focus-visible {
 .portrait-image img {
   object-fit: cover;
   object-position: 45% 60%;
-  transform: scale(1.25);
+  transform: scale(1.85);
+  transform-origin: 43% 34%;
 }
 .portrait-caption {
   padding: 21px;
