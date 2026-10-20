@@ -20,7 +20,7 @@ npm run start
 
 ## Content and structure
 
-- `pages/index.tsx`: commercial copy, nine project records, service descriptions, project filtering, accessible contribution disclosures, mobile navigation, and contact links.
+- `pages/index.tsx`: commercial copy, twelve project records, service descriptions, project filtering, accessible contribution disclosures, mobile navigation, and contact links.
 - `styles/globals.css`: responsive visual system, focus styles, and reduced-motion support. Uses system fonts with no third-party font requests.
 - `pages/_document.tsx`: document shell; page metadata belongs in the homepage Head.
 - `public/`: retained portrait and project assets.
@@ -37,3 +37,5 @@ Check the homepage at desktop and mobile widths. Exercise all project filters, t
 ## Deployment
 
 The project retains its Next.js/Vercel setup. Review the pull-request preview before merging into the production branch. A framework/dependency major-version migration is separate from this visual and content redesign.
+
+Qash, Dubsado, and Valley Coffee were added at the owner’s request with confirmed roles: Qash (DevSecOps, SRE, cybersecurity), Dubsado (Backend Engineer, Tech Lead), and Valley Coffee (technology management, marketing, campaigns). Qash links to qash.ai, the corrected address provided by the owner.

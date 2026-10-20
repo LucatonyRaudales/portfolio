@@ -4,7 +4,52 @@ import { useState } from "react";
 
 const linkedin = "https://www.linkedin.com/in/tony-raudales";
 const github = "https://github.com/LucatonyRaudales";
-const projects = [
+type Project = {
+  name: string;
+  category: string;
+  discipline: string;
+  image?: string;
+  description: string;
+  contribution?: string;
+  color: string;
+  url?: string;
+};
+
+const projects: Project[] = [
+  {
+    name: "Qash",
+    category: "Cloud & DevOps",
+    discipline: "DevSecOps · SRE · Cybersecurity",
+    description:
+      "A platform for business accounts, international payments, and currency conversions.",
+    contribution:
+      "I work as a DevSecOps and Site Reliability Engineer at Qash, with responsibilities spanning platform reliability and cybersecurity.",
+    url: "https://www.qash.ai/",
+    color: "lavender",
+  },
+  {
+    name: "Dubsado",
+    category: "Web & Applications",
+    discipline: "Backend engineering · Technical leadership",
+    description:
+      "A business management platform for proposals, contracts, invoicing, scheduling, and client workflows.",
+    contribution:
+      "Worked as a Backend Engineer and Tech Lead, contributing backend engineering and technical leadership to Dubsado.",
+    color: "peach",
+    url: "https://www.dubsado.com/",
+  },
+  {
+    name: "Valley Coffee",
+    category: "Web & Applications",
+    discipline: "Technology management · Marketing · Campaigns",
+    image: "/valley-coffee-preview.png",
+    description:
+      "A bilingual website connecting coffee growers, Honduran coffee shops, and international importers with coffee from eastern Honduras.",
+    contribution:
+      "Manage and maintain Valley Coffee’s technology, support its digital marketing, and prepare and send marketing campaigns.",
+    color: "sage",
+    url: "https://coffee.valleyhn.lat/",
+  },
   {
     name: "Dira",
     category: "Fintech",
@@ -388,7 +433,8 @@ export default function Home() {
                 ))}
               </div>
               <span className="project-count" role="status">
-                {visibleProjects.length} {visibleProjects.length === 1 ? "project" : "projects"}
+                {visibleProjects.length}{" "}
+                {visibleProjects.length === 1 ? "project" : "projects"}
               </span>
             </div>
             <div className="project-grid">
@@ -396,27 +442,48 @@ export default function Home() {
                 <article className="project-card" key={project.name}>
                   <div className={`project-visual ${project.color}`}>
                     <span className="project-number">
-                      0{projects.indexOf(project) + 1}
+                      {String(projects.indexOf(project) + 1).padStart(2, "0")}
                     </span>
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} project preview`}
-                      width={640}
-                      height={360}
-                      sizes="(max-width: 760px) 90vw, 45vw"
-                    />
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} project preview`}
+                        width={640}
+                        height={360}
+                        sizes="(max-width: 760px) 90vw, 45vw"
+                      />
+                    ) : (
+                      <span className="project-wordmark">
+                        {project.name}
+                        <span>{project.discipline}</span>
+                      </span>
+                    )}
                     <span className="project-category">{project.category}</span>
                   </div>
                   <div className="project-info">
                     <p className="micro-label">{project.discipline}</p>
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>
-                    <details>
-                      <summary>
-                        My contribution <span aria-hidden="true">+</span>
-                      </summary>
-                      <div className="contribution">{project.contribution}</div>
-                    </details>
+                    {project.contribution && (
+                      <details>
+                        <summary>
+                          My contribution <span aria-hidden="true">+</span>
+                        </summary>
+                        <div className="contribution">
+                          {project.contribution}
+                        </div>
+                      </details>
+                    )}
+                    {project.url && (
+                      <a
+                        className="text-link project-site-link"
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit {project.name} <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
                   </div>
                 </article>
               ))}
