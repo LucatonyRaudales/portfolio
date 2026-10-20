@@ -379,7 +379,7 @@ summary:focus-visible {
 }
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 17px;
 }
 .service-card {
@@ -1159,4 +1159,67 @@ summary:focus-visible {
 }
 .project-site-link {
   margin-top: 12px;
+}
+
+.industry-section {
+  padding-bottom: 100px;
+}
+.industry-section > .eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+}
+.industry-section h2 {
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -1.7px;
+  font-weight: 500;
+  margin: 0 0 35px;
+}
+.industry-section h2 .serif {
+  color: #626a58;
+}
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.industry-grid article {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.industry-grid h3 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+}
+.industry-grid p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+.industry-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  max-width: 650px;
+  margin-top: 24px;
+}
+@media (max-width: 760px) {
+  .industry-section {
+    padding-bottom: 65px;
+  }
+  .industry-section h2 {
+    font-size: 34px;
+  }
+  .industry-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 18px;
+  }
+}
+@media (max-width: 420px) {
+  .industry-grid {
+    grid-template-columns: 1fr;
+  }
 }

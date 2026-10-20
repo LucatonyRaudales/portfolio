@@ -18,6 +18,7 @@ type Project = {
 const projects: Project[] = [
   {
     name: "Qash",
+    image: "/qash-home.jpg",
     category: "Cloud & DevOps",
     discipline: "DevSecOps · SRE · Cybersecurity",
     description:
@@ -29,6 +30,7 @@ const projects: Project[] = [
   },
   {
     name: "Dubsado",
+    image: "/dubsado-home.jpg",
     category: "Web & Applications",
     discipline: "Backend engineering · Technical leadership",
     description:
@@ -153,12 +155,12 @@ const services = [
   {
     n: "01",
     icon: "↗",
-    title: "Cloud & DevOps",
-    text: "Infrastructure that supports your next step. From cloud configuration to repeatable deployments.",
+    title: "IT, cloud & infrastructure",
+    text: "Keep your business systems running and plan the infrastructure behind your operations.",
     items: [
-      "AWS & Kubernetes",
-      "Infrastructure as code",
-      "CI/CD & deployment workflows",
+      "Servers, cloud & business email",
+      "Backups & infrastructure maintenance",
+      "DevOps, automation & deployments",
     ],
   },
   {
@@ -167,13 +169,24 @@ const services = [
     title: "Websites & applications",
     text: "A new website, a better customer journey, or ongoing care for the application you already have.",
     items: [
-      "Next.js & full-stack development",
-      "Website maintenance & integrations",
-      "PostgreSQL & MySQL",
+      "Business websites & landing pages",
+      "Maintenance, forms & integrations",
+      "Custom applications & databases",
     ],
   },
   {
     n: "03",
+    icon: "↗",
+    title: "Marketing & product campaigns",
+    text: "Plan, launch, and manage campaigns for your products and services, connecting the message, landing page, and follow-up.",
+    items: [
+      "Product launches & service promotions",
+      "Email campaigns & lead follow-up",
+      "Campaign landing pages & reporting",
+    ],
+  },
+  {
+    n: "04",
     icon: "◈",
     title: "Security & technical guidance",
     text: "Understand your technical risks and turn a complex challenge into practical next steps.",
@@ -199,20 +212,20 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Tony R. Raudales — Cloud, DevOps & Web Consultant</title>
+        <title>Tony R. Raudales — Technology & Marketing Consultant</title>
         <meta
           name="description"
-          content="Independent cloud, DevOps and web development consultant. Tony R. Raudales helps businesses build and maintain infrastructure and applications, drawing on fintech and cybersecurity experience."
+          content="Technology and marketing consulting for paint, energy, construction, and logistics businesses. IT, servers, websites, cybersecurity, and campaigns for products and services."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f6f5f0" />
         <meta
           property="og:title"
-          content="Tony R. Raudales — Technology, thoughtfully built."
+          content="Tony R. Raudales — Technology & marketing, in sync."
         />
         <meta
           property="og:description"
-          content="Cloud infrastructure, modern websites, and practical security guidance. Remote consulting from Honduras for U.S. businesses."
+          content="IT, websites, infrastructure, and marketing campaigns for products and services. Remote consulting from Honduras for U.S. businesses."
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
@@ -270,21 +283,21 @@ export default function Home() {
         >
           <div className="hero-copy">
             <p className="eyebrow">
-              <span className="status-dot" /> CLOUD / CODE / SECURITY
+              <span className="status-dot" /> TECHNOLOGY / WEBSITES / MARKETING
             </p>
             <h1 id="hero-title">
-              Technology,
+              Technology.
               <br />
-              thoughtfully
+              Marketing.
               <br />
-              <span className="serif">built.</span>
+              <span className="serif">In sync.</span>
               <span className="hero-asterisk" aria-hidden="true">
                 ✳
               </span>
             </h1>
             <p className="hero-description">
-              I’m Tony. I help businesses build, improve, and maintain the
-              technology they depend on.
+              I’m Tony. I help businesses manage their technology and run
+              marketing campaigns for their products and services.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#contact">
@@ -317,7 +330,7 @@ export default function Home() {
               <div className="portrait-caption">
                 <div>
                   <strong>Tony R. Raudales</strong>
-                  <span>Engineer. Builder. Your technical partner.</span>
+                  <span>Technology, websites, and marketing.</span>
                 </div>
                 <span className="caption-cross" aria-hidden="true">
                   +
@@ -331,9 +344,9 @@ export default function Home() {
               <div>
                 <span className="micro-label">CONNECTED EXPERTISE</span>
                 <p>
-                  From the application
+                  From your operations
                   <br />
-                  to the infrastructure.
+                  to your next campaign.
                 </p>
               </div>
               <span aria-hidden="true">↗</span>
@@ -341,14 +354,12 @@ export default function Home() {
           </div>
         </section>
         <div className="expertise-strip section-wrap">
-          <span className="micro-label">HANDS-ON WITH</span>
+          <span className="micro-label">SERVICES FOR</span>
           <div>
-            <span>AWS</span>
-            <span>Kubernetes</span>
-            <span>Terragrunt</span>
-            <span>Next.js</span>
-            <span>PostgreSQL</span>
-            <span>MySQL</span>
+            <span>Paint & coatings</span>
+            <span>Energy</span>
+            <span>Construction</span>
+            <span>Logistics</span>
           </div>
         </div>
         <section
@@ -360,7 +371,7 @@ export default function Home() {
             <p className="eyebrow">01 / HOW I CAN HELP</p>
             <div>
               <h2 id="services-title">
-                A technical partner.
+                One point of contact.
                 <br />
                 <span className="serif">A clearer way forward.</span>
               </h2>
@@ -392,13 +403,54 @@ export default function Home() {
           <div className="service-footnote">
             <span aria-hidden="true">+</span>
             <p>
-              Need help connecting your website and marketing? I also support
-              landing pages, campaign setup, and technical integrations.
+              Bring your technology and campaigns into one plan, with clear
+              deliverables, ongoing maintenance, and support agreed around your
+              business.
             </p>
             <a href="#contact" className="text-link">
               Let’s discuss it <span aria-hidden="true">↗</span>
             </a>
           </div>
+        </section>
+        <section
+          className="industry-section section-wrap"
+          aria-labelledby="industry-title"
+        >
+          <p className="eyebrow">YOUR BUSINESS, IN CONTEXT</p>
+          <h2 id="industry-title">
+            Built around what you sell.
+            <br />
+            <span className="serif">And how you operate.</span>
+          </h2>
+          <div className="industry-grid">
+            {[
+              {
+                name: "Paint & coatings",
+                text: "Product launches, catalogs, distributor inquiries, and campaigns for retail and trade customers.",
+              },
+              {
+                name: "Energy",
+                text: "Service campaigns, project inquiries, website care, and technology support for your team.",
+              },
+              {
+                name: "Construction",
+                text: "Project portfolios, quotation requests, service promotions, and tools to follow up with prospects.",
+              },
+              {
+                name: "Logistics",
+                text: "B2B service campaigns, lead capture, business systems, and infrastructure support.",
+              },
+            ].map((industry) => (
+              <article key={industry.name}>
+                <h3>{industry.name}</h3>
+                <p>{industry.text}</p>
+              </article>
+            ))}
+          </div>
+          <p className="industry-note">
+            Have a different type of business? Let’s discuss your products,
+            services, and technology needs to define a practical starting point.
+          </p>
         </section>
         <section
           className="work-section section-space"
@@ -663,7 +715,7 @@ export default function Home() {
               <p>
                 Tell me about your business, what you want to improve,
                 <br className="desktop-break" /> and where you could use a
-                technical partner.
+                technology and marketing partner.
               </p>
               <a
                 className="button button-orange"
@@ -683,7 +735,7 @@ export default function Home() {
       </main>
       <footer className="site-footer section-wrap">
         <a className="footer-brand" href="#home">
-          Tony R. Raudales<span>Cloud · Code · Security</span>
+          Tony R. Raudales<span>Technology · Websites · Marketing</span>
         </a>
         <p>© {new Date().getFullYear()} Tony R. Raudales</p>
         <a href="#home" className="text-link">
