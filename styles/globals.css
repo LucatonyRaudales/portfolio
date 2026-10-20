@@ -269,8 +269,9 @@ summary:focus-visible {
 }
 .portrait-image img {
   object-fit: cover;
-  object-position: center 35%;
-  filter: grayscale(100%);
+  object-position: 45% 60%;
+  transform: scale(1.25);
+
 }
 .portrait-caption {
   padding: 21px;

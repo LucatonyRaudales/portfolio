@@ -262,7 +262,7 @@ export default function Home() {
               </div>
               <div className="portrait-image">
                 <Image
-                  src="/me.jpeg"
+                  src="/tony-portrait.jpg"
                   alt="Tony R. Raudales"
                   fill
                   priority
