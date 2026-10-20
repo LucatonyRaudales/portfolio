@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const linkedin = "https://www.linkedin.com/in/tony-raudales";
 const github = "https://github.com/LucatonyRaudales";
+const siteUrl = "https://www.traudales.site";
 type Project = {
   name: string;
   category: string;
@@ -219,6 +220,8 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f6f5f0" />
+        <link rel="canonical" href={siteUrl + "/"} />
+        <meta property="og:url" content={siteUrl + "/"} />
         <meta
           property="og:title"
           content="Tony R. Raudales — Technology & marketing, in sync."
