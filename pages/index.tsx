@@ -178,16 +178,27 @@ const services = [
   {
     n: "03",
     icon: "↗",
-    title: "Marketing & product campaigns",
-    text: "Plan, launch, and manage campaigns for your products and services, connecting the message, landing page, and follow-up.",
+    title: "Marketing & social presence",
+    text: "Make your products and services easier to discover through a consistent web presence, social content, and focused campaigns.",
     items: [
       "Product launches & service promotions",
-      "Email campaigns & lead follow-up",
-      "Campaign landing pages & reporting",
+      "Social content & email campaigns",
+      "Landing pages, lead follow-up & reporting",
     ],
   },
   {
     n: "04",
+    icon: "↗",
+    title: "AI agents & sales workflows",
+    text: "Give interested customers a useful first response and help your team follow up. Start with one workflow and clear rules for human handoff.",
+    items: [
+      "Inquiry handling & lead qualification",
+      "CRM integrations & sales follow-up",
+      "Agreed autonomy, oversight & reporting",
+    ],
+  },
+  {
+    n: "05",
     icon: "◈",
     title: "Security & technical guidance",
     text: "Understand your technical risks and turn a complex challenge into practical next steps.",
@@ -216,7 +227,7 @@ export default function Home() {
         <title>Tony R. Raudales — Technology & Marketing Consultant</title>
         <meta
           name="description"
-          content="Technology and marketing consulting for paint, energy, construction, and logistics businesses. IT, servers, websites, cybersecurity, and campaigns for products and services."
+          content="Technology and marketing consulting for paint, energy, construction, and logistics businesses. Websites, social media, product campaigns, AI agents, cloud, and cybersecurity."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f6f5f0" />
@@ -228,7 +239,7 @@ export default function Home() {
         />
         <meta
           property="og:description"
-          content="IT, websites, infrastructure, and marketing campaigns for products and services. Remote consulting from Honduras for U.S. businesses."
+          content="Build your web and social presence with product campaigns, AI agents, and reliable technology. Remote consulting from Honduras for U.S. businesses."
         />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
@@ -296,8 +307,9 @@ export default function Home() {
               <span className="serif">In sync.</span>
             </h1>
             <p className="hero-description">
-              I’m Tony. I help businesses manage their technology and run
-              marketing campaigns for their products and services.
+              I’m Tony. I help businesses build a stronger presence online,
+              reach more potential customers, and follow up through websites,
+              social media, campaigns, and AI agents.
             </p>
             <div className="hero-actions">
               <a className="button button-dark" href="#contact">
