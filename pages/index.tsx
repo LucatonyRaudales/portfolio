@@ -719,13 +719,16 @@ export default function Home() {
               </p>
               <a
                 className="button button-orange"
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:tony@traudales.site"
               >
-                Start a conversation on LinkedIn{" "}
+                Email Tony{" "}
                 <span aria-hidden="true">↗</span>
               </a>
+              <p>
+                <a href="mailto:tony@traudales.site">tony@traudales.site</a>
+                <br />
+                Monday–Friday · 8 a.m.–5 p.m. Houston time
+              </p>
             </div>
             <span className="contact-mark" aria-hidden="true">
               ✳
