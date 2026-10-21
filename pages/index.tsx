@@ -737,6 +737,20 @@ export default function Home() {
                 <span aria-hidden="true">↗</span>
               </a>
               <p>
+                <a
+                  className="text-link"
+                  href="https://calendar.zoho.com/zc/view/slot-booking/0801123c6e4b96dcdcd096c191a30c8a00009d48176f5759c911890e95225685be322363262d7f8cfb4334d1d60511c3f3c5847913ab1fbdcfec17e2131374b0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a 20-minute introduction <span aria-hidden="true">↗</span>
+                </a>
+                <br />
+                Booking dates available through November 20, 2026.
+                <br />
+                Choose your time zone on the booking page.
+              </p>
+              <p>
                 <a href="mailto:tony@traudales.site">tony@traudales.site</a>
                 <br />
                 Monday–Friday · 8 a.m.–5 p.m. Houston time
