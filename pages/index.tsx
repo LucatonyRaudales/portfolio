@@ -42,12 +42,12 @@ const projects: Project[] = [
     url: "https://www.dubsado.com/",
   },
   {
-    name: "Valley Coffee",
+    name: "Valley Coffee Honduras",
     category: "Web & Applications",
     discipline: "Technology management · Marketing · Campaigns",
     image: "/valley-coffee-preview.png",
     description:
-      "A bilingual website connecting coffee growers, Honduran coffee shops, and international importers with coffee from eastern Honduras.",
+      "A coffee business of Valley Holdings developing a traceable whole-bean offer for cafés and coffee drinkers, with a planned pilot origin in Danlí, El Paraíso, Honduras.",
     contribution:
       "Manage and maintain Valley Coffee’s technology, support its digital marketing, and prepare and send marketing campaigns.",
     color: "sage",
